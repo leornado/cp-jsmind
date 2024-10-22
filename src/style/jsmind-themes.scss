@@ -1,0 +1,328 @@
+@use 'sass:color';
+@use "sass:map";
+
+@mixin themeBgc($prop, $map, $colorKey, $baseColorKey) {
+  @if (map.has-key($map, $colorKey)) {
+    #{$prop}: map.get($map, $colorKey);
+  } @else {
+    #{$prop}: color.scale(map.get($map, $baseColorKey), $lightness: 77%);
+  }
+}
+
+@mixin themeC($prop, $map, $colorKey, $baseColorKey) {
+  @if (map.has-key($map, $colorKey)) {
+    #{$prop}: map.get($map, $colorKey);
+  } @else {
+    #{$prop}: color.scale(map.get($map, $baseColorKey), $blackness: 60%);
+  }
+}
+
+@mixin defIfBlank($prop, $map, $key1, $key2) {
+  @if (map.has-key($map, $key1)) {
+    #{$prop}: map.get($map, $key1);
+  } @else {
+    #{$prop}: map.get($map, $key2);
+  }
+}
+
+$themes: (
+        'primary':(
+                'bw': 0,
+                'bgc':#428bca, 'bc':#357ebd, 'c':#fff,
+                'hbgc':#3276b1, 'sbc':#f1c40f, 'sc':#fff),
+        'warning':(
+                'bw': 0,
+                'bgc':#f0ad4e, 'bc':#eea236, 'c':#fff,
+                'hbgc':#ed9c28, 'sbc':#11f, 'sc':#fff),
+        'danger':(
+                'bw': 0,
+                'bgc':#d9534f, 'bc':#d43f3a, 'c':#fff,
+                'hbgc':#d2322d, 'sbc':#11f, 'sc':#fff),
+        'success':(
+                'bw': 0,
+                'bgc':#5cb85c, 'bc':#4cae4c, 'c':#fff,
+                'hbgc':#47a447, 'sbc':#11f, 'sc':#fff),
+        'info':(
+                'bw': 0,
+                'bgc':#5dc0de, 'bc':#46b8da, 'c':#fff,
+                'hbgc':#39b3d7, 'sbc':#11f, 'sc':#fff),
+        'greensea':(
+                'bw': 0,
+                'bgc':#1abc9c, 'bc':#1abc9c, 'c':#fff,
+                'hbgc':#16a085, 'sbc':#11f, 'sc':#fff),
+        'nephrite':(
+                'bw': 0,
+                'bgc':#2ecc71, 'bc':#2ecc71, 'c':#fff,
+                'hbgc':#27ae60, 'sbc':#11f, 'sc':#fff),
+        'belizehole':(
+                'bw': 0,
+                'bgc':#3498db, 'bc':#3498db, 'c':#fff,
+                'hbgc':#2980b9, 'sbc':#11f, 'sc':#fff),
+        'wisteria':(
+                'bw': 0,
+                'bgc':#9b59b6, 'bc':#9b59b6, 'c':#fff,
+                'hbgc':#8e44ad, 'sbc':#11f, 'sc':#fff),
+        'asphalt':(
+                'bw': 0,
+                'bgc':#34495e, 'bc':#34495e, 'c':#fff,
+                'hbgc':#2c3e50, 'sbc':#11f, 'sc':#fff),
+        'orange':(
+                'bw': 0,
+                'bgc':#f1c40f, 'bc':#f1c40f, 'c':#fff,
+                'hbgc':#f39c12, 'sbc':#11f, 'sc':#fff),
+        'pumpkin':(
+                'bw': 0,
+                'bgc':#e67e22, 'bc':#e67e22, 'c':#fff,
+                'hbgc':#d35400, 'sbc':#11f, 'sc':#fff),
+        'pomegranate':(
+                'bw': 0,
+                'bgc':#e74c3c, 'bc':#e74c3c, 'c':#fff,
+                'hbgc':#c0392b, 'sbc':#11f, 'sc':#fff),
+        'clouds':(
+                'bw': 0,
+                'bgc':#ecf0f1, 'bc':#ecf0f1, 'c':#000,
+                'hbgc':#bdc3c7, 'sbc':#11f, 'sc':#000),
+        'asbestos':(
+                'bw': 0,
+                'bgc':#95a5a6, 'bc':#95a5a6, 'c':#fff,
+                'hbgc':#7f8c8d, 'sbc':#11f, 'sc':#fff),
+        'leveled':(
+                'bw': 0,
+                'bgc':#1abc9c, 'bc':#1abc9c, 'c':#fff,
+                'hbgc':#16a085, 'sbc':#11f, 'sc':#fff,
+                'color-themes': (
+                        'color-1':'danger',
+                        'color-2':'success',
+                        'color-3':'info',
+                        'color-4':'wisteria',
+                        'color-5':'pumpkin',
+                        'color-6':'nephrite',
+                        'color-7':'warning',
+                        'color-8':'belizehole',
+                        'color-9':'orange',
+                        'color-10':'asphalt',
+                ),
+                'level-fs': (
+                        'fs-1': 24px,
+                        'fs-2': 20px,
+                        'fs-3': 18px,
+                        'fs-4': 16px,
+                        'fs-5': 14px,
+                        'fs-6': 13px,
+                        'fs-7': 12px,
+                        'fs-8': 12px,
+                        'fs-9': 12px,
+                        'fs-10': 12px,
+                ),
+                'level-bw': (
+                        'bw-1': 0px,
+                        'bw-2': 0px,
+                        'bw-3': 0px,
+                        'bw-4': 0px,
+                        'bw-5': 0px,
+                        'bw-6': 0px,
+                        'bw-7': 0px,
+                        'bw-8': 0px,
+                        'bw-9': 0px,
+                        'bw-10': 0px,
+                )),
+// plain-themes
+        'primary-bordered':(
+                'bw':3px, 'bc':#428bca,
+                'hc':#fff,
+                'sbc':#f0ad4e),
+        'warning-bordered':(
+                'bw':3px, 'bc':#f0ad4e,
+                'hc':#fff,
+                'sbc':#428bca),
+        'danger-bordered':(
+                'bw':3px, 'bc':#d9534f,
+                'hc':#fff,
+                'sbc':#5cb85c),
+        'success-bordered':(
+                'bw':3px, 'bc':#5cb85c,
+                'hc':#fff,
+                'sbc':#d9534f),
+        'info-bordered':(
+                'bw':3px, 'bc':#5dc0de,
+                'hc':#fff,
+                'sbc':#f1c40f),
+        'greensea-bordered':(
+                'bw':3px, 'bc':#1abc9c,
+                'hc':#fff,
+                'sbc':#bc1a1a),
+        'nephrite-bordered':(
+                'bw':3px, 'bc':#2ecc71,
+                'hc':#fff,
+                'sbc':#cc2e70),
+        'belizehole-bordered':(
+                'bw':3px, 'bc':#3498db,
+                'hc':#fff,
+                'sbc':#db9834),
+        'wisteria-bordered':(
+                'bw':3px, 'bc':#9b59b6,
+                'hc':#fff,
+                'sbc':#6ab659),
+        'asphalt-bordered':(
+                'bw':3px, 'bc':#34495e,
+                'hc':#fff,
+                'sbc':#5e5134),
+        'orange-bordered':(
+                'bw':3px, 'bc':#f1c40f,
+                'hc':#fff,
+                'sbc':#0fadf1),
+        'pumpkin-bordered':(
+                'bw':3px, 'bc':#e67e22,
+                'hc':#fff,
+                'sbc':#22c2e6),
+        'pomegranate-bordered':(
+                'bw':3px, 'bc':#e74c3c,
+                'hc':#fff,
+                'sbc':#3ce78c),
+        'clouds-bordered':(
+                'bw':3px, 'bc':#bdc3c7, 'c':color.scale(#bdc3c7, $blackness: 100%),
+                'hc':#fff,
+                'sbc':#525456),
+        'asbestos-bordered':(
+                'bw':3px, 'bc':#7f8c8d,
+                'hc':#fff,
+                'sbc':#8d897f),
+        'leveled-bordered':(
+                'bw':3px, 'bc':#1abc9c,
+                'hc':#fff,
+                'sbc':#bc1a1a,
+                'color-themes': (
+                        'color-1':'danger-bordered',
+                        'color-2':'success-bordered',
+                        'color-3':'info-bordered',
+                        'color-4':'wisteria-bordered',
+                        'color-5':'pumpkin-bordered',
+                        'color-6':'nephrite-bordered',
+                        'color-7':'warning-bordered',
+                        'color-8':'belizehole-bordered',
+                        'color-9':'orange-bordered',
+                        'color-10':'asphalt-bordered',
+                ),
+                'level-fs': (
+                        'fs-1': 24px,
+                        'fs-2': 20px,
+                        'fs-3': 18px,
+                        'fs-4': 16px,
+                        'fs-5': 14px,
+                        'fs-6': 13px,
+                        'fs-7': 12px,
+                        'fs-8': 12px,
+                        'fs-9': 12px,
+                        'fs-10': 12px,
+                )),
+);
+
+$node-level-bw: (
+        'bw-1': 5px,
+        'bw-2': 4px,
+        'bw-3': 3px,
+        'bw-4': 3px,
+        'bw-5': 3px,
+        'bw-6': 2px,
+        'bw-7': 2px,
+        'bw-8': 2px,
+        'bw-9': 2px,
+        'bw-10': 2px,
+);
+
+$node-level-fs: (
+        'fs-1': 24px,
+        'fs-2': 22px,
+        'fs-3': 20px,
+        'fs-4': 18px,
+        'fs-5': 16px,
+        'fs-6': 14px,
+        'fs-7': 12px,
+        'fs-8': 10px,
+        'fs-9': 8px,
+        'fs-10': 6px,
+);
+
+@each $theme, $themeCfg in $themes {
+  jmnodes.theme-#{$theme} jmnode {
+    @include themeBgc('background-color', $themeCfg, 'bgc', 'bc');
+    @include themeC('color', $themeCfg, 'c', 'bc');
+    border-style: solid;
+    border-width: map.get($themeCfg, 'bw');
+    border-color: map.get($themeCfg, 'bc');
+  }
+  jmnodes.theme-#{$theme} jmnode:hover {
+    @include defIfBlank('background-color', $themeCfg, 'hbgc', 'bc');
+    @include defIfBlank('color', $themeCfg, 'hc', 'c');
+    @include defIfBlank('border-width', $themeCfg, 'hbw', 'bw');
+    @include defIfBlank('border-color', $themeCfg, 'hbc', 'bc');
+  }
+  jmnodes.theme-#{$theme} jmnode.selected {
+    @include themeBgc('background-color', $themeCfg, 'sbgc', 'sbc');
+    @include themeC('color', $themeCfg, 'sc', 'sbc');
+    border-color: map.get($themeCfg, 'sbc');
+  }
+
+  $colorThemes: map.get($themeCfg, 'color-themes');
+  $levelFs: $node-level-fs;
+  $levelBw: $node_level-bw;
+
+  @if (map.has-key($themeCfg, 'level-fs')) {
+    $levelFs: map.get($themeCfg, 'level-fs');
+  }
+  @if (map.has-key($themeCfg, 'level-bw')) {
+    $levelBw: map.get($themeCfg, 'level-bw');
+  }
+
+  @for $i from 1 through 10 {
+    jmnodes.theme-#{$theme} jmnode.level-#{$i},
+    jmnodes.theme-#{$theme} jmnode.level-#{$i}:hover,
+    jmnodes.theme-#{$theme} jmnode.level-#{$i}.selected {
+      font-size: map.get($levelFs, 'fs-' + $i);
+      border-width: map.get($levelBw, 'bw-' + $i);
+    }
+
+    @if ($colorThemes != null) {
+      $levelThemeName: map.get($colorThemes, 'color-' + $i);
+
+      @if ($levelThemeName != null) {
+        $levelThemeCfg: map.get($themes, $levelThemeName);
+
+        jmnodes.theme-#{$theme} jmnode.level-#{$i} {
+          @include themeBgc('background-color', $levelThemeCfg, 'bgc', 'bc');
+          @include themeC('color', $levelThemeCfg, 'c', 'bc');
+          border-style: solid;
+          border-color: map.get($levelThemeCfg, 'bc');
+        }
+        jmnodes.theme-#{$theme} jmnode.level-#{$i}:hover {
+          @include defIfBlank('background-color', $levelThemeCfg, 'hbgc', 'bc');
+          @include defIfBlank('color', $levelThemeCfg, 'hc', 'c');
+          @include defIfBlank('border-color', $levelThemeCfg, 'hbc', 'bc');
+        }
+        jmnodes.theme-#{$theme} jmnode.level-#{$i}.selected {
+          @include themeBgc('background-color', $levelThemeCfg, 'sbgc', 'sbc');
+          @include themeC('color', $levelThemeCfg, 'sc', 'sbc');
+          border-color: map.get($levelThemeCfg, 'sbc');
+        }
+      }
+    }
+  }
+}
+
+@function ends-with($string, $find) {
+  @if (str-index($string, $find) == (str-length($string) - str-length($find) + 1)) {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+
+
+
+
+
+
+
+
+

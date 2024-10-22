@@ -161,8 +161,8 @@ export class ViewProvider {
     }
     init_nodes_size(node) {
         var view_data = node._data.view;
-        view_data.width = view_data.element.clientWidth;
-        view_data.height = view_data.element.clientHeight;
+        view_data.width = view_data.element.offsetWidth;
+        view_data.height = view_data.element.offsetHeight;
     }
     init_nodes() {
         var nodes = this.jm.mind.nodes;
@@ -225,6 +225,10 @@ export class ViewProvider {
         }
         d.setAttribute('nodeid', node.id);
         d.style.visibility = 'hidden';
+
+        if (this.opts.maxStyleLevel === undefined) this.opts.maxStyleLevel = 10;
+        d.classList.add('level-' + (node.level >= this.opts.maxStyleLevel ? this.opts.maxStyleLevel : node.level));
+
         this._reset_node_custom_style(d, node.data);
 
         parent_node.appendChild(d);
@@ -259,13 +263,13 @@ export class ViewProvider {
             this.render_node(element, node);
         }
         if (this.layout.is_visible(node)) {
-            view_data.width = element.clientWidth;
-            view_data.height = element.clientHeight;
+            view_data.width = element.offsetWidth;
+            view_data.height = element.offsetHeight;
         } else {
             let origin_style = element.getAttribute('style');
             element.style = 'visibility: visible; left:0; top:0;';
-            view_data.width = element.clientWidth;
-            view_data.height = element.clientHeight;
+            view_data.width = element.offsetWidth;
+            view_data.height = element.offsetHeight;
             element.style = origin_style;
         }
     }
@@ -305,7 +309,7 @@ export class ViewProvider {
         var ncs = getComputedStyle(element);
         this.e_editor.value = topic;
         this.e_editor.style.width =
-            element.clientWidth -
+            element.offsetWidth -
             parseInt(ncs.getPropertyValue('padding-left')) -
             parseInt(ncs.getPropertyValue('padding-right')) +
             'px';
@@ -471,6 +475,10 @@ export class ViewProvider {
         let expander_text = this._get_expander_text(node);
         $.t(expander, expander_text);
 
+        expander.classList.remove('expanded');
+        expander.classList.remove('collapsed');
+        expander.classList.add(node.expanded ? 'expanded' : 'collapsed');
+
         let p_expander = this.layout.get_expander_point(node);
         expander.style.left = view_offset.x + p_expander.x + 'px';
         expander.style.top = view_offset.y + p_expander.y + 'px';
@@ -505,6 +513,26 @@ export class ViewProvider {
         this._reset_node_custom_style(node._data.view.element, node.data);
     }
     _reset_node_custom_style(node_element, node_data) {
+        if ('nodeStyle' in node_data) {
+            for (let k in node_data.style) {
+                if (node_element.style.hasOwnProperty(k)) {
+                    node_element.style[k] = node_data.style[k];
+                }
+            }
+        }
+        if ('border-color' in node_data) {
+            node_element.style.borderColor = node_data['border-color'];
+            if (!node_data['border-style']) node_element.style.borderStyle = 'solid';
+            if (!node_data['border-width']) node_element.style.borderWidth = '3px';
+        }
+        if ('border-width' in node_data) {
+            node_element.style.borderWidth = node_data['border-width'];
+            if (!node_data['border-style']) node_element.style.borderStyle = 'solid';
+        }
+        if ('border-style' in node_data) {
+            node_element.style.borderStyle = node_data['border-style'];
+        }
+
         if ('background-color' in node_data) {
             node_element.style.backgroundColor = node_data['background-color'];
         }
@@ -533,8 +561,8 @@ export class ViewProvider {
 
                 img.onload = function () {
                     var c = $.c('canvas');
-                    c.width = node_element.clientWidth;
-                    c.height = node_element.clientHeight;
+                    c.width = node_element.offsetWidth;
+                    c.height = node_element.offsetHeight;
                     var img = this;
                     if (c.getContext) {
                         var ctx = c.getContext('2d');
@@ -542,8 +570,8 @@ export class ViewProvider {
                             img,
                             2,
                             2,
-                            node_element.clientWidth,
-                            node_element.clientHeight
+                            node_element.offsetWidth,
+                            node_element.offsetHeight
                         );
                         var scaledImageData = c.toDataURL();
                         node_element.style.backgroundImage = 'url(' + scaledImageData + ')';
@@ -564,6 +592,27 @@ export class ViewProvider {
     restore_selected_node_custom_style(node) {
         var node_element = node._data.view.element;
         var node_data = node.data;
+
+        if ('nodeStyle' in node_data) {
+            for (let k in node_data.style) {
+                if (node_element.style.hasOwnProperty(k)) {
+                    node_element.style[k] = node_data.style[k];
+                }
+            }
+        }
+        if ('border-color' in node_data) {
+            node_element.style.borderColor = node_data['border-color'];
+            if (!node_data['border-style']) node_element.style.borderStyle = 'solid';
+            if (!node_data['border-width']) node_element.style.borderWidth = '3px';
+        }
+        if ('border-width' in node_data) {
+            node_element.style.borderWidth = node_data['border-width'];
+            if (!node_data['border-style']) node_element.style.borderStyle = 'solid';
+        }
+        if ('border-style' in node_data) {
+            node_element.style.borderStyle = node_data['border-style'];
+        }
+
         if ('background-color' in node_data) {
             node_element.style.backgroundColor = node_data['background-color'];
         }

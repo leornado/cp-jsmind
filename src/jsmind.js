@@ -69,6 +69,7 @@ export default class jsMind {
             zoom: this.options.view.zoom,
             custom_node_render: this.options.view.custom_node_render,
             expander_style: this.options.view.expander_style,
+            maxStyleLevel: this.options.view.maxStyleLevel === undefined ? 10 : this.options.view.maxStyleLevel,
         };
         // create instance of function provider
         this.data = new DataProvider(this);
@@ -286,6 +287,8 @@ export default class jsMind {
             logger.debug('data.load ok');
         }
 
+        this.markNodeLevel(this.mind.root, 1);
+
         this.view.load();
         logger.debug('view.load ok');
 
@@ -296,6 +299,13 @@ export default class jsMind {
         logger.debug('view.show ok');
 
         this.invoke_event_handle(EventType.show, { data: [mind] });
+    }
+    markNodeLevel(node, level) {
+        node.level = level;
+        for (let i = 0; i < node.children.length; i++) {
+            const child = node.children[i];
+            this.markNodeLevel(child, level + 1);
+        }
     }
     show(mind, skip_centering) {
         this._reset();

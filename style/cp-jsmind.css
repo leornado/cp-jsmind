@@ -1,0 +1,3415 @@
+/**
+ * @license BSD
+ * @copyright 2014-2023 hizzgdev@163.com
+ *
+ * Project Home:
+ *   https://github.com/hizzgdev/jsmind/
+ */
+/* important section */
+.jsmind-inner {
+  position: relative;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  outline: none;
+} /*box-shadow:0 0 2px #000;*/
+.jsmind-inner {
+  moz-user-select: -moz-none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.jsmind-inner canvas {
+  position: absolute;
+}
+
+/* z-index:1 */
+svg.jsmind {
+  position: absolute;
+  z-index: 1;
+}
+
+canvas.jsmind {
+  position: absolute;
+  z-index: 1;
+}
+
+/* z-index:2 */
+jmnodes {
+  position: absolute;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0);
+} /*background color is necessary*/
+jmnode {
+  position: absolute;
+  cursor: default;
+  max-width: 400px;
+}
+
+jmexpander {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  display: block;
+  overflow: hidden;
+  line-height: 10px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 6px;
+  border-width: 1px;
+  border-style: solid;
+  cursor: pointer;
+}
+jmexpander.expanded {
+  line-height: 9px;
+}
+
+.jmnode-overflow-wrap jmnodes {
+  min-width: 420px;
+}
+
+.jmnode-overflow-hidden jmnode {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* default theme */
+jmnode {
+  padding: 10px;
+  background-color: #fff;
+  color: #333;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #666;
+  font: 16px/1.125 Verdana, Arial, Helvetica, sans-serif;
+}
+
+jmnode:hover {
+  box-shadow: 2px 2px 8px #000;
+  background-color: #ebebeb;
+  color: #333;
+}
+
+jmnode.selected {
+  background-color: #11f;
+  color: #fff;
+  box-shadow: 2px 2px 8px #000;
+}
+
+jmnode.root {
+  font-size: 24px;
+}
+
+jmexpander {
+  border-color: gray;
+}
+
+jmexpander:hover {
+  border-color: #000;
+}
+
+@media screen and (max-device-width: 1024px) {
+  jmnode {
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 14px;
+  }
+  jmnode.root {
+    font-size: 21px;
+  }
+}
+jmnodes.theme-primary jmnode {
+  background-color: #428bca;
+  color: #fff;
+  border-style: solid;
+  border-width: 0;
+  border-color: #357ebd;
+}
+
+jmnodes.theme-primary jmnode:hover {
+  background-color: #3276b1;
+  color: #fff;
+  border-width: 0;
+  border-color: #357ebd;
+}
+
+jmnodes.theme-primary jmnode.selected {
+  background-color: rgb(251.78, 241.43, 199.8);
+  color: #fff;
+  border-color: #f1c40f;
+}
+
+jmnodes.theme-primary jmnode.level-1,
+jmnodes.theme-primary jmnode.level-1:hover,
+jmnodes.theme-primary jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-primary jmnode.level-2,
+jmnodes.theme-primary jmnode.level-2:hover,
+jmnodes.theme-primary jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-primary jmnode.level-3,
+jmnodes.theme-primary jmnode.level-3:hover,
+jmnodes.theme-primary jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-primary jmnode.level-4,
+jmnodes.theme-primary jmnode.level-4:hover,
+jmnodes.theme-primary jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-primary jmnode.level-5,
+jmnodes.theme-primary jmnode.level-5:hover,
+jmnodes.theme-primary jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-primary jmnode.level-6,
+jmnodes.theme-primary jmnode.level-6:hover,
+jmnodes.theme-primary jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-primary jmnode.level-7,
+jmnodes.theme-primary jmnode.level-7:hover,
+jmnodes.theme-primary jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-primary jmnode.level-8,
+jmnodes.theme-primary jmnode.level-8:hover,
+jmnodes.theme-primary jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-primary jmnode.level-9,
+jmnodes.theme-primary jmnode.level-9:hover,
+jmnodes.theme-primary jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-primary jmnode.level-10,
+jmnodes.theme-primary jmnode.level-10:hover,
+jmnodes.theme-primary jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-warning jmnode {
+  background-color: #f0ad4e;
+  color: #fff;
+  border-style: solid;
+  border-width: 0;
+  border-color: #eea236;
+}
+
+jmnodes.theme-warning jmnode:hover {
+  background-color: #ed9c28;
+  color: #fff;
+  border-width: 0;
+  border-color: #eea236;
+}
+
+jmnodes.theme-warning jmnode.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-warning jmnode.level-1,
+jmnodes.theme-warning jmnode.level-1:hover,
+jmnodes.theme-warning jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-warning jmnode.level-2,
+jmnodes.theme-warning jmnode.level-2:hover,
+jmnodes.theme-warning jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-warning jmnode.level-3,
+jmnodes.theme-warning jmnode.level-3:hover,
+jmnodes.theme-warning jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-warning jmnode.level-4,
+jmnodes.theme-warning jmnode.level-4:hover,
+jmnodes.theme-warning jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-warning jmnode.level-5,
+jmnodes.theme-warning jmnode.level-5:hover,
+jmnodes.theme-warning jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-warning jmnode.level-6,
+jmnodes.theme-warning jmnode.level-6:hover,
+jmnodes.theme-warning jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-warning jmnode.level-7,
+jmnodes.theme-warning jmnode.level-7:hover,
+jmnodes.theme-warning jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-warning jmnode.level-8,
+jmnodes.theme-warning jmnode.level-8:hover,
+jmnodes.theme-warning jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-warning jmnode.level-9,
+jmnodes.theme-warning jmnode.level-9:hover,
+jmnodes.theme-warning jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-warning jmnode.level-10,
+jmnodes.theme-warning jmnode.level-10:hover,
+jmnodes.theme-warning jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-danger jmnode {
+  background-color: #d9534f;
+  color: #fff;
+  border-style: solid;
+  border-width: 0;
+  border-color: #d43f3a;
+}
+
+jmnodes.theme-danger jmnode:hover {
+  background-color: #d2322d;
+  color: #fff;
+  border-width: 0;
+  border-color: #d43f3a;
+}
+
+jmnodes.theme-danger jmnode.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-danger jmnode.level-1,
+jmnodes.theme-danger jmnode.level-1:hover,
+jmnodes.theme-danger jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-danger jmnode.level-2,
+jmnodes.theme-danger jmnode.level-2:hover,
+jmnodes.theme-danger jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-danger jmnode.level-3,
+jmnodes.theme-danger jmnode.level-3:hover,
+jmnodes.theme-danger jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-danger jmnode.level-4,
+jmnodes.theme-danger jmnode.level-4:hover,
+jmnodes.theme-danger jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-danger jmnode.level-5,
+jmnodes.theme-danger jmnode.level-5:hover,
+jmnodes.theme-danger jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-danger jmnode.level-6,
+jmnodes.theme-danger jmnode.level-6:hover,
+jmnodes.theme-danger jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-danger jmnode.level-7,
+jmnodes.theme-danger jmnode.level-7:hover,
+jmnodes.theme-danger jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-danger jmnode.level-8,
+jmnodes.theme-danger jmnode.level-8:hover,
+jmnodes.theme-danger jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-danger jmnode.level-9,
+jmnodes.theme-danger jmnode.level-9:hover,
+jmnodes.theme-danger jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-danger jmnode.level-10,
+jmnodes.theme-danger jmnode.level-10:hover,
+jmnodes.theme-danger jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-success jmnode {
+  background-color: #5cb85c;
+  color: #fff;
+  border-style: solid;
+  border-width: 0;
+  border-color: #4cae4c;
+}
+
+jmnodes.theme-success jmnode:hover {
+  background-color: #47a447;
+  color: #fff;
+  border-width: 0;
+  border-color: #4cae4c;
+}
+
+jmnodes.theme-success jmnode.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-success jmnode.level-1,
+jmnodes.theme-success jmnode.level-1:hover,
+jmnodes.theme-success jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-success jmnode.level-2,
+jmnodes.theme-success jmnode.level-2:hover,
+jmnodes.theme-success jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-success jmnode.level-3,
+jmnodes.theme-success jmnode.level-3:hover,
+jmnodes.theme-success jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-success jmnode.level-4,
+jmnodes.theme-success jmnode.level-4:hover,
+jmnodes.theme-success jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-success jmnode.level-5,
+jmnodes.theme-success jmnode.level-5:hover,
+jmnodes.theme-success jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-success jmnode.level-6,
+jmnodes.theme-success jmnode.level-6:hover,
+jmnodes.theme-success jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-success jmnode.level-7,
+jmnodes.theme-success jmnode.level-7:hover,
+jmnodes.theme-success jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-success jmnode.level-8,
+jmnodes.theme-success jmnode.level-8:hover,
+jmnodes.theme-success jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-success jmnode.level-9,
+jmnodes.theme-success jmnode.level-9:hover,
+jmnodes.theme-success jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-success jmnode.level-10,
+jmnodes.theme-success jmnode.level-10:hover,
+jmnodes.theme-success jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-info jmnode {
+  background-color: #5dc0de;
+  color: #fff;
+  border-style: solid;
+  border-width: 0;
+  border-color: #46b8da;
+}
+
+jmnodes.theme-info jmnode:hover {
+  background-color: #39b3d7;
+  color: #fff;
+  border-width: 0;
+  border-color: #46b8da;
+}
+
+jmnodes.theme-info jmnode.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-info jmnode.level-1,
+jmnodes.theme-info jmnode.level-1:hover,
+jmnodes.theme-info jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-info jmnode.level-2,
+jmnodes.theme-info jmnode.level-2:hover,
+jmnodes.theme-info jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-info jmnode.level-3,
+jmnodes.theme-info jmnode.level-3:hover,
+jmnodes.theme-info jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-info jmnode.level-4,
+jmnodes.theme-info jmnode.level-4:hover,
+jmnodes.theme-info jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-info jmnode.level-5,
+jmnodes.theme-info jmnode.level-5:hover,
+jmnodes.theme-info jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-info jmnode.level-6,
+jmnodes.theme-info jmnode.level-6:hover,
+jmnodes.theme-info jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-info jmnode.level-7,
+jmnodes.theme-info jmnode.level-7:hover,
+jmnodes.theme-info jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-info jmnode.level-8,
+jmnodes.theme-info jmnode.level-8:hover,
+jmnodes.theme-info jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-info jmnode.level-9,
+jmnodes.theme-info jmnode.level-9:hover,
+jmnodes.theme-info jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-info jmnode.level-10,
+jmnodes.theme-info jmnode.level-10:hover,
+jmnodes.theme-info jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-greensea jmnode {
+  background-color: #1abc9c;
+  color: #fff;
+  border-style: solid;
+  border-width: 0;
+  border-color: #1abc9c;
+}
+
+jmnodes.theme-greensea jmnode:hover {
+  background-color: #16a085;
+  color: #fff;
+  border-width: 0;
+  border-color: #1abc9c;
+}
+
+jmnodes.theme-greensea jmnode.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-greensea jmnode.level-1,
+jmnodes.theme-greensea jmnode.level-1:hover,
+jmnodes.theme-greensea jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-greensea jmnode.level-2,
+jmnodes.theme-greensea jmnode.level-2:hover,
+jmnodes.theme-greensea jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-greensea jmnode.level-3,
+jmnodes.theme-greensea jmnode.level-3:hover,
+jmnodes.theme-greensea jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-greensea jmnode.level-4,
+jmnodes.theme-greensea jmnode.level-4:hover,
+jmnodes.theme-greensea jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-greensea jmnode.level-5,
+jmnodes.theme-greensea jmnode.level-5:hover,
+jmnodes.theme-greensea jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-greensea jmnode.level-6,
+jmnodes.theme-greensea jmnode.level-6:hover,
+jmnodes.theme-greensea jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-greensea jmnode.level-7,
+jmnodes.theme-greensea jmnode.level-7:hover,
+jmnodes.theme-greensea jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-greensea jmnode.level-8,
+jmnodes.theme-greensea jmnode.level-8:hover,
+jmnodes.theme-greensea jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-greensea jmnode.level-9,
+jmnodes.theme-greensea jmnode.level-9:hover,
+jmnodes.theme-greensea jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-greensea jmnode.level-10,
+jmnodes.theme-greensea jmnode.level-10:hover,
+jmnodes.theme-greensea jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-nephrite jmnode {
+  background-color: #2ecc71;
+  color: #fff;
+  border-style: solid;
+  border-width: 0;
+  border-color: #2ecc71;
+}
+
+jmnodes.theme-nephrite jmnode:hover {
+  background-color: #27ae60;
+  color: #fff;
+  border-width: 0;
+  border-color: #2ecc71;
+}
+
+jmnodes.theme-nephrite jmnode.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-nephrite jmnode.level-1,
+jmnodes.theme-nephrite jmnode.level-1:hover,
+jmnodes.theme-nephrite jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-nephrite jmnode.level-2,
+jmnodes.theme-nephrite jmnode.level-2:hover,
+jmnodes.theme-nephrite jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-nephrite jmnode.level-3,
+jmnodes.theme-nephrite jmnode.level-3:hover,
+jmnodes.theme-nephrite jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-nephrite jmnode.level-4,
+jmnodes.theme-nephrite jmnode.level-4:hover,
+jmnodes.theme-nephrite jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-nephrite jmnode.level-5,
+jmnodes.theme-nephrite jmnode.level-5:hover,
+jmnodes.theme-nephrite jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-nephrite jmnode.level-6,
+jmnodes.theme-nephrite jmnode.level-6:hover,
+jmnodes.theme-nephrite jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-nephrite jmnode.level-7,
+jmnodes.theme-nephrite jmnode.level-7:hover,
+jmnodes.theme-nephrite jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-nephrite jmnode.level-8,
+jmnodes.theme-nephrite jmnode.level-8:hover,
+jmnodes.theme-nephrite jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-nephrite jmnode.level-9,
+jmnodes.theme-nephrite jmnode.level-9:hover,
+jmnodes.theme-nephrite jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-nephrite jmnode.level-10,
+jmnodes.theme-nephrite jmnode.level-10:hover,
+jmnodes.theme-nephrite jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-belizehole jmnode {
+  background-color: #3498db;
+  color: #fff;
+  border-style: solid;
+  border-width: 0;
+  border-color: #3498db;
+}
+
+jmnodes.theme-belizehole jmnode:hover {
+  background-color: #2980b9;
+  color: #fff;
+  border-width: 0;
+  border-color: #3498db;
+}
+
+jmnodes.theme-belizehole jmnode.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-belizehole jmnode.level-1,
+jmnodes.theme-belizehole jmnode.level-1:hover,
+jmnodes.theme-belizehole jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-belizehole jmnode.level-2,
+jmnodes.theme-belizehole jmnode.level-2:hover,
+jmnodes.theme-belizehole jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-belizehole jmnode.level-3,
+jmnodes.theme-belizehole jmnode.level-3:hover,
+jmnodes.theme-belizehole jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-belizehole jmnode.level-4,
+jmnodes.theme-belizehole jmnode.level-4:hover,
+jmnodes.theme-belizehole jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-belizehole jmnode.level-5,
+jmnodes.theme-belizehole jmnode.level-5:hover,
+jmnodes.theme-belizehole jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-belizehole jmnode.level-6,
+jmnodes.theme-belizehole jmnode.level-6:hover,
+jmnodes.theme-belizehole jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-belizehole jmnode.level-7,
+jmnodes.theme-belizehole jmnode.level-7:hover,
+jmnodes.theme-belizehole jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-belizehole jmnode.level-8,
+jmnodes.theme-belizehole jmnode.level-8:hover,
+jmnodes.theme-belizehole jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-belizehole jmnode.level-9,
+jmnodes.theme-belizehole jmnode.level-9:hover,
+jmnodes.theme-belizehole jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-belizehole jmnode.level-10,
+jmnodes.theme-belizehole jmnode.level-10:hover,
+jmnodes.theme-belizehole jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-wisteria jmnode {
+  background-color: #9b59b6;
+  color: #fff;
+  border-style: solid;
+  border-width: 0;
+  border-color: #9b59b6;
+}
+
+jmnodes.theme-wisteria jmnode:hover {
+  background-color: #8e44ad;
+  color: #fff;
+  border-width: 0;
+  border-color: #9b59b6;
+}
+
+jmnodes.theme-wisteria jmnode.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-wisteria jmnode.level-1,
+jmnodes.theme-wisteria jmnode.level-1:hover,
+jmnodes.theme-wisteria jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-wisteria jmnode.level-2,
+jmnodes.theme-wisteria jmnode.level-2:hover,
+jmnodes.theme-wisteria jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-wisteria jmnode.level-3,
+jmnodes.theme-wisteria jmnode.level-3:hover,
+jmnodes.theme-wisteria jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-wisteria jmnode.level-4,
+jmnodes.theme-wisteria jmnode.level-4:hover,
+jmnodes.theme-wisteria jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-wisteria jmnode.level-5,
+jmnodes.theme-wisteria jmnode.level-5:hover,
+jmnodes.theme-wisteria jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-wisteria jmnode.level-6,
+jmnodes.theme-wisteria jmnode.level-6:hover,
+jmnodes.theme-wisteria jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-wisteria jmnode.level-7,
+jmnodes.theme-wisteria jmnode.level-7:hover,
+jmnodes.theme-wisteria jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-wisteria jmnode.level-8,
+jmnodes.theme-wisteria jmnode.level-8:hover,
+jmnodes.theme-wisteria jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-wisteria jmnode.level-9,
+jmnodes.theme-wisteria jmnode.level-9:hover,
+jmnodes.theme-wisteria jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-wisteria jmnode.level-10,
+jmnodes.theme-wisteria jmnode.level-10:hover,
+jmnodes.theme-wisteria jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asphalt jmnode {
+  background-color: #34495e;
+  color: #fff;
+  border-style: solid;
+  border-width: 0;
+  border-color: #34495e;
+}
+
+jmnodes.theme-asphalt jmnode:hover {
+  background-color: #2c3e50;
+  color: #fff;
+  border-width: 0;
+  border-color: #34495e;
+}
+
+jmnodes.theme-asphalt jmnode.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-asphalt jmnode.level-1,
+jmnodes.theme-asphalt jmnode.level-1:hover,
+jmnodes.theme-asphalt jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-asphalt jmnode.level-2,
+jmnodes.theme-asphalt jmnode.level-2:hover,
+jmnodes.theme-asphalt jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-asphalt jmnode.level-3,
+jmnodes.theme-asphalt jmnode.level-3:hover,
+jmnodes.theme-asphalt jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-asphalt jmnode.level-4,
+jmnodes.theme-asphalt jmnode.level-4:hover,
+jmnodes.theme-asphalt jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-asphalt jmnode.level-5,
+jmnodes.theme-asphalt jmnode.level-5:hover,
+jmnodes.theme-asphalt jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-asphalt jmnode.level-6,
+jmnodes.theme-asphalt jmnode.level-6:hover,
+jmnodes.theme-asphalt jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asphalt jmnode.level-7,
+jmnodes.theme-asphalt jmnode.level-7:hover,
+jmnodes.theme-asphalt jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asphalt jmnode.level-8,
+jmnodes.theme-asphalt jmnode.level-8:hover,
+jmnodes.theme-asphalt jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asphalt jmnode.level-9,
+jmnodes.theme-asphalt jmnode.level-9:hover,
+jmnodes.theme-asphalt jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asphalt jmnode.level-10,
+jmnodes.theme-asphalt jmnode.level-10:hover,
+jmnodes.theme-asphalt jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-orange jmnode {
+  background-color: #f1c40f;
+  color: #fff;
+  border-style: solid;
+  border-width: 0;
+  border-color: #f1c40f;
+}
+
+jmnodes.theme-orange jmnode:hover {
+  background-color: #f39c12;
+  color: #fff;
+  border-width: 0;
+  border-color: #f1c40f;
+}
+
+jmnodes.theme-orange jmnode.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-orange jmnode.level-1,
+jmnodes.theme-orange jmnode.level-1:hover,
+jmnodes.theme-orange jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-orange jmnode.level-2,
+jmnodes.theme-orange jmnode.level-2:hover,
+jmnodes.theme-orange jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-orange jmnode.level-3,
+jmnodes.theme-orange jmnode.level-3:hover,
+jmnodes.theme-orange jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-orange jmnode.level-4,
+jmnodes.theme-orange jmnode.level-4:hover,
+jmnodes.theme-orange jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-orange jmnode.level-5,
+jmnodes.theme-orange jmnode.level-5:hover,
+jmnodes.theme-orange jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-orange jmnode.level-6,
+jmnodes.theme-orange jmnode.level-6:hover,
+jmnodes.theme-orange jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-orange jmnode.level-7,
+jmnodes.theme-orange jmnode.level-7:hover,
+jmnodes.theme-orange jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-orange jmnode.level-8,
+jmnodes.theme-orange jmnode.level-8:hover,
+jmnodes.theme-orange jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-orange jmnode.level-9,
+jmnodes.theme-orange jmnode.level-9:hover,
+jmnodes.theme-orange jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-orange jmnode.level-10,
+jmnodes.theme-orange jmnode.level-10:hover,
+jmnodes.theme-orange jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pumpkin jmnode {
+  background-color: #e67e22;
+  color: #fff;
+  border-style: solid;
+  border-width: 0;
+  border-color: #e67e22;
+}
+
+jmnodes.theme-pumpkin jmnode:hover {
+  background-color: #d35400;
+  color: #fff;
+  border-width: 0;
+  border-color: #e67e22;
+}
+
+jmnodes.theme-pumpkin jmnode.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-pumpkin jmnode.level-1,
+jmnodes.theme-pumpkin jmnode.level-1:hover,
+jmnodes.theme-pumpkin jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-pumpkin jmnode.level-2,
+jmnodes.theme-pumpkin jmnode.level-2:hover,
+jmnodes.theme-pumpkin jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-pumpkin jmnode.level-3,
+jmnodes.theme-pumpkin jmnode.level-3:hover,
+jmnodes.theme-pumpkin jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-pumpkin jmnode.level-4,
+jmnodes.theme-pumpkin jmnode.level-4:hover,
+jmnodes.theme-pumpkin jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-pumpkin jmnode.level-5,
+jmnodes.theme-pumpkin jmnode.level-5:hover,
+jmnodes.theme-pumpkin jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-pumpkin jmnode.level-6,
+jmnodes.theme-pumpkin jmnode.level-6:hover,
+jmnodes.theme-pumpkin jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pumpkin jmnode.level-7,
+jmnodes.theme-pumpkin jmnode.level-7:hover,
+jmnodes.theme-pumpkin jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pumpkin jmnode.level-8,
+jmnodes.theme-pumpkin jmnode.level-8:hover,
+jmnodes.theme-pumpkin jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pumpkin jmnode.level-9,
+jmnodes.theme-pumpkin jmnode.level-9:hover,
+jmnodes.theme-pumpkin jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pumpkin jmnode.level-10,
+jmnodes.theme-pumpkin jmnode.level-10:hover,
+jmnodes.theme-pumpkin jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pomegranate jmnode {
+  background-color: #e74c3c;
+  color: #fff;
+  border-style: solid;
+  border-width: 0;
+  border-color: #e74c3c;
+}
+
+jmnodes.theme-pomegranate jmnode:hover {
+  background-color: #c0392b;
+  color: #fff;
+  border-width: 0;
+  border-color: #e74c3c;
+}
+
+jmnodes.theme-pomegranate jmnode.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-pomegranate jmnode.level-1,
+jmnodes.theme-pomegranate jmnode.level-1:hover,
+jmnodes.theme-pomegranate jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-pomegranate jmnode.level-2,
+jmnodes.theme-pomegranate jmnode.level-2:hover,
+jmnodes.theme-pomegranate jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-pomegranate jmnode.level-3,
+jmnodes.theme-pomegranate jmnode.level-3:hover,
+jmnodes.theme-pomegranate jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-pomegranate jmnode.level-4,
+jmnodes.theme-pomegranate jmnode.level-4:hover,
+jmnodes.theme-pomegranate jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-pomegranate jmnode.level-5,
+jmnodes.theme-pomegranate jmnode.level-5:hover,
+jmnodes.theme-pomegranate jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-pomegranate jmnode.level-6,
+jmnodes.theme-pomegranate jmnode.level-6:hover,
+jmnodes.theme-pomegranate jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pomegranate jmnode.level-7,
+jmnodes.theme-pomegranate jmnode.level-7:hover,
+jmnodes.theme-pomegranate jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pomegranate jmnode.level-8,
+jmnodes.theme-pomegranate jmnode.level-8:hover,
+jmnodes.theme-pomegranate jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pomegranate jmnode.level-9,
+jmnodes.theme-pomegranate jmnode.level-9:hover,
+jmnodes.theme-pomegranate jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pomegranate jmnode.level-10,
+jmnodes.theme-pomegranate jmnode.level-10:hover,
+jmnodes.theme-pomegranate jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-clouds jmnode {
+  background-color: #ecf0f1;
+  color: #000;
+  border-style: solid;
+  border-width: 0;
+  border-color: #ecf0f1;
+}
+
+jmnodes.theme-clouds jmnode:hover {
+  background-color: #bdc3c7;
+  color: #000;
+  border-width: 0;
+  border-color: #ecf0f1;
+}
+
+jmnodes.theme-clouds jmnode.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #000;
+  border-color: #11f;
+}
+
+jmnodes.theme-clouds jmnode.level-1,
+jmnodes.theme-clouds jmnode.level-1:hover,
+jmnodes.theme-clouds jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-clouds jmnode.level-2,
+jmnodes.theme-clouds jmnode.level-2:hover,
+jmnodes.theme-clouds jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-clouds jmnode.level-3,
+jmnodes.theme-clouds jmnode.level-3:hover,
+jmnodes.theme-clouds jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-clouds jmnode.level-4,
+jmnodes.theme-clouds jmnode.level-4:hover,
+jmnodes.theme-clouds jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-clouds jmnode.level-5,
+jmnodes.theme-clouds jmnode.level-5:hover,
+jmnodes.theme-clouds jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-clouds jmnode.level-6,
+jmnodes.theme-clouds jmnode.level-6:hover,
+jmnodes.theme-clouds jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-clouds jmnode.level-7,
+jmnodes.theme-clouds jmnode.level-7:hover,
+jmnodes.theme-clouds jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-clouds jmnode.level-8,
+jmnodes.theme-clouds jmnode.level-8:hover,
+jmnodes.theme-clouds jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-clouds jmnode.level-9,
+jmnodes.theme-clouds jmnode.level-9:hover,
+jmnodes.theme-clouds jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-clouds jmnode.level-10,
+jmnodes.theme-clouds jmnode.level-10:hover,
+jmnodes.theme-clouds jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asbestos jmnode {
+  background-color: #95a5a6;
+  color: #fff;
+  border-style: solid;
+  border-width: 0;
+  border-color: #95a5a6;
+}
+
+jmnodes.theme-asbestos jmnode:hover {
+  background-color: #7f8c8d;
+  color: #fff;
+  border-width: 0;
+  border-color: #95a5a6;
+}
+
+jmnodes.theme-asbestos jmnode.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-asbestos jmnode.level-1,
+jmnodes.theme-asbestos jmnode.level-1:hover,
+jmnodes.theme-asbestos jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-asbestos jmnode.level-2,
+jmnodes.theme-asbestos jmnode.level-2:hover,
+jmnodes.theme-asbestos jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-asbestos jmnode.level-3,
+jmnodes.theme-asbestos jmnode.level-3:hover,
+jmnodes.theme-asbestos jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-asbestos jmnode.level-4,
+jmnodes.theme-asbestos jmnode.level-4:hover,
+jmnodes.theme-asbestos jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-asbestos jmnode.level-5,
+jmnodes.theme-asbestos jmnode.level-5:hover,
+jmnodes.theme-asbestos jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-asbestos jmnode.level-6,
+jmnodes.theme-asbestos jmnode.level-6:hover,
+jmnodes.theme-asbestos jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asbestos jmnode.level-7,
+jmnodes.theme-asbestos jmnode.level-7:hover,
+jmnodes.theme-asbestos jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asbestos jmnode.level-8,
+jmnodes.theme-asbestos jmnode.level-8:hover,
+jmnodes.theme-asbestos jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asbestos jmnode.level-9,
+jmnodes.theme-asbestos jmnode.level-9:hover,
+jmnodes.theme-asbestos jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asbestos jmnode.level-10,
+jmnodes.theme-asbestos jmnode.level-10:hover,
+jmnodes.theme-asbestos jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-leveled jmnode {
+  background-color: #1abc9c;
+  color: #fff;
+  border-style: solid;
+  border-width: 0;
+  border-color: #1abc9c;
+}
+
+jmnodes.theme-leveled jmnode:hover {
+  background-color: #16a085;
+  color: #fff;
+  border-width: 0;
+  border-color: #1abc9c;
+}
+
+jmnodes.theme-leveled jmnode.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-leveled jmnode.level-1,
+jmnodes.theme-leveled jmnode.level-1:hover,
+jmnodes.theme-leveled jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 0px;
+}
+
+jmnodes.theme-leveled jmnode.level-1 {
+  background-color: #d9534f;
+  color: #fff;
+  border-style: solid;
+  border-color: #d43f3a;
+}
+
+jmnodes.theme-leveled jmnode.level-1:hover {
+  background-color: #d2322d;
+  color: #fff;
+  border-color: #d43f3a;
+}
+
+jmnodes.theme-leveled jmnode.level-1.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-leveled jmnode.level-2,
+jmnodes.theme-leveled jmnode.level-2:hover,
+jmnodes.theme-leveled jmnode.level-2.selected {
+  font-size: 20px;
+  border-width: 0px;
+}
+
+jmnodes.theme-leveled jmnode.level-2 {
+  background-color: #5cb85c;
+  color: #fff;
+  border-style: solid;
+  border-color: #4cae4c;
+}
+
+jmnodes.theme-leveled jmnode.level-2:hover {
+  background-color: #47a447;
+  color: #fff;
+  border-color: #4cae4c;
+}
+
+jmnodes.theme-leveled jmnode.level-2.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-leveled jmnode.level-3,
+jmnodes.theme-leveled jmnode.level-3:hover,
+jmnodes.theme-leveled jmnode.level-3.selected {
+  font-size: 18px;
+  border-width: 0px;
+}
+
+jmnodes.theme-leveled jmnode.level-3 {
+  background-color: #5dc0de;
+  color: #fff;
+  border-style: solid;
+  border-color: #46b8da;
+}
+
+jmnodes.theme-leveled jmnode.level-3:hover {
+  background-color: #39b3d7;
+  color: #fff;
+  border-color: #46b8da;
+}
+
+jmnodes.theme-leveled jmnode.level-3.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-leveled jmnode.level-4,
+jmnodes.theme-leveled jmnode.level-4:hover,
+jmnodes.theme-leveled jmnode.level-4.selected {
+  font-size: 16px;
+  border-width: 0px;
+}
+
+jmnodes.theme-leveled jmnode.level-4 {
+  background-color: #9b59b6;
+  color: #fff;
+  border-style: solid;
+  border-color: #9b59b6;
+}
+
+jmnodes.theme-leveled jmnode.level-4:hover {
+  background-color: #8e44ad;
+  color: #fff;
+  border-color: #9b59b6;
+}
+
+jmnodes.theme-leveled jmnode.level-4.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-leveled jmnode.level-5,
+jmnodes.theme-leveled jmnode.level-5:hover,
+jmnodes.theme-leveled jmnode.level-5.selected {
+  font-size: 14px;
+  border-width: 0px;
+}
+
+jmnodes.theme-leveled jmnode.level-5 {
+  background-color: #e67e22;
+  color: #fff;
+  border-style: solid;
+  border-color: #e67e22;
+}
+
+jmnodes.theme-leveled jmnode.level-5:hover {
+  background-color: #d35400;
+  color: #fff;
+  border-color: #e67e22;
+}
+
+jmnodes.theme-leveled jmnode.level-5.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-leveled jmnode.level-6,
+jmnodes.theme-leveled jmnode.level-6:hover,
+jmnodes.theme-leveled jmnode.level-6.selected {
+  font-size: 13px;
+  border-width: 0px;
+}
+
+jmnodes.theme-leveled jmnode.level-6 {
+  background-color: #2ecc71;
+  color: #fff;
+  border-style: solid;
+  border-color: #2ecc71;
+}
+
+jmnodes.theme-leveled jmnode.level-6:hover {
+  background-color: #27ae60;
+  color: #fff;
+  border-color: #2ecc71;
+}
+
+jmnodes.theme-leveled jmnode.level-6.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-leveled jmnode.level-7,
+jmnodes.theme-leveled jmnode.level-7:hover,
+jmnodes.theme-leveled jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 0px;
+}
+
+jmnodes.theme-leveled jmnode.level-7 {
+  background-color: #f0ad4e;
+  color: #fff;
+  border-style: solid;
+  border-color: #eea236;
+}
+
+jmnodes.theme-leveled jmnode.level-7:hover {
+  background-color: #ed9c28;
+  color: #fff;
+  border-color: #eea236;
+}
+
+jmnodes.theme-leveled jmnode.level-7.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-leveled jmnode.level-8,
+jmnodes.theme-leveled jmnode.level-8:hover,
+jmnodes.theme-leveled jmnode.level-8.selected {
+  font-size: 12px;
+  border-width: 0px;
+}
+
+jmnodes.theme-leveled jmnode.level-8 {
+  background-color: #3498db;
+  color: #fff;
+  border-style: solid;
+  border-color: #3498db;
+}
+
+jmnodes.theme-leveled jmnode.level-8:hover {
+  background-color: #2980b9;
+  color: #fff;
+  border-color: #3498db;
+}
+
+jmnodes.theme-leveled jmnode.level-8.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-leveled jmnode.level-9,
+jmnodes.theme-leveled jmnode.level-9:hover,
+jmnodes.theme-leveled jmnode.level-9.selected {
+  font-size: 12px;
+  border-width: 0px;
+}
+
+jmnodes.theme-leveled jmnode.level-9 {
+  background-color: #f1c40f;
+  color: #fff;
+  border-style: solid;
+  border-color: #f1c40f;
+}
+
+jmnodes.theme-leveled jmnode.level-9:hover {
+  background-color: #f39c12;
+  color: #fff;
+  border-color: #f1c40f;
+}
+
+jmnodes.theme-leveled jmnode.level-9.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-leveled jmnode.level-10,
+jmnodes.theme-leveled jmnode.level-10:hover,
+jmnodes.theme-leveled jmnode.level-10.selected {
+  font-size: 12px;
+  border-width: 0px;
+}
+
+jmnodes.theme-leveled jmnode.level-10 {
+  background-color: #34495e;
+  color: #fff;
+  border-style: solid;
+  border-color: #34495e;
+}
+
+jmnodes.theme-leveled jmnode.level-10:hover {
+  background-color: #2c3e50;
+  color: #fff;
+  border-color: #34495e;
+}
+
+jmnodes.theme-leveled jmnode.level-10.selected {
+  background-color: rgb(200.26, 200.26, 255);
+  color: #fff;
+  border-color: #11f;
+}
+
+jmnodes.theme-primary-bordered jmnode {
+  background-color: rgb(211.53, 228.32, 242.81);
+  color: rgb(66, 73.9441176471, 80.8);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #428bca;
+}
+
+jmnodes.theme-primary-bordered jmnode:hover {
+  background-color: #428bca;
+  color: #fff;
+  border-width: 3px;
+  border-color: #428bca;
+}
+
+jmnodes.theme-primary-bordered jmnode.selected {
+  background-color: rgb(251.55, 236.14, 214.29);
+  color: rgb(96, 88.5555555556, 78);
+  border-color: #f0ad4e;
+}
+
+jmnodes.theme-primary-bordered jmnode.level-1,
+jmnodes.theme-primary-bordered jmnode.level-1:hover,
+jmnodes.theme-primary-bordered jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-primary-bordered jmnode.level-2,
+jmnodes.theme-primary-bordered jmnode.level-2:hover,
+jmnodes.theme-primary-bordered jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-primary-bordered jmnode.level-3,
+jmnodes.theme-primary-bordered jmnode.level-3:hover,
+jmnodes.theme-primary-bordered jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-primary-bordered jmnode.level-4,
+jmnodes.theme-primary-bordered jmnode.level-4:hover,
+jmnodes.theme-primary-bordered jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-primary-bordered jmnode.level-5,
+jmnodes.theme-primary-bordered jmnode.level-5:hover,
+jmnodes.theme-primary-bordered jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-primary-bordered jmnode.level-6,
+jmnodes.theme-primary-bordered jmnode.level-6:hover,
+jmnodes.theme-primary-bordered jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-primary-bordered jmnode.level-7,
+jmnodes.theme-primary-bordered jmnode.level-7:hover,
+jmnodes.theme-primary-bordered jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-primary-bordered jmnode.level-8,
+jmnodes.theme-primary-bordered jmnode.level-8:hover,
+jmnodes.theme-primary-bordered jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-primary-bordered jmnode.level-9,
+jmnodes.theme-primary-bordered jmnode.level-9:hover,
+jmnodes.theme-primary-bordered jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-primary-bordered jmnode.level-10,
+jmnodes.theme-primary-bordered jmnode.level-10:hover,
+jmnodes.theme-primary-bordered jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-warning-bordered jmnode {
+  background-color: rgb(251.55, 236.14, 214.29);
+  color: rgb(96, 88.5555555556, 78);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #f0ad4e;
+}
+
+jmnodes.theme-warning-bordered jmnode:hover {
+  background-color: #f0ad4e;
+  color: #fff;
+  border-width: 3px;
+  border-color: #f0ad4e;
+}
+
+jmnodes.theme-warning-bordered jmnode.selected {
+  background-color: rgb(211.53, 228.32, 242.81);
+  color: rgb(66, 73.9441176471, 80.8);
+  border-color: #428bca;
+}
+
+jmnodes.theme-warning-bordered jmnode.level-1,
+jmnodes.theme-warning-bordered jmnode.level-1:hover,
+jmnodes.theme-warning-bordered jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-warning-bordered jmnode.level-2,
+jmnodes.theme-warning-bordered jmnode.level-2:hover,
+jmnodes.theme-warning-bordered jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-warning-bordered jmnode.level-3,
+jmnodes.theme-warning-bordered jmnode.level-3:hover,
+jmnodes.theme-warning-bordered jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-warning-bordered jmnode.level-4,
+jmnodes.theme-warning-bordered jmnode.level-4:hover,
+jmnodes.theme-warning-bordered jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-warning-bordered jmnode.level-5,
+jmnodes.theme-warning-bordered jmnode.level-5:hover,
+jmnodes.theme-warning-bordered jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-warning-bordered jmnode.level-6,
+jmnodes.theme-warning-bordered jmnode.level-6:hover,
+jmnodes.theme-warning-bordered jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-warning-bordered jmnode.level-7,
+jmnodes.theme-warning-bordered jmnode.level-7:hover,
+jmnodes.theme-warning-bordered jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-warning-bordered jmnode.level-8,
+jmnodes.theme-warning-bordered jmnode.level-8:hover,
+jmnodes.theme-warning-bordered jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-warning-bordered jmnode.level-9,
+jmnodes.theme-warning-bordered jmnode.level-9:hover,
+jmnodes.theme-warning-bordered jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-warning-bordered jmnode.level-10,
+jmnodes.theme-warning-bordered jmnode.level-10:hover,
+jmnodes.theme-warning-bordered jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-danger-bordered jmnode {
+  background-color: rgb(246.26, 215.44, 214.52);
+  color: rgb(86.8, 79.2260869565, 79);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #d9534f;
+}
+
+jmnodes.theme-danger-bordered jmnode:hover {
+  background-color: #d9534f;
+  color: #fff;
+  border-width: 3px;
+  border-color: #d9534f;
+}
+
+jmnodes.theme-danger-bordered jmnode.selected {
+  background-color: rgb(217.51, 238.67, 217.51);
+  color: rgb(85.8083394294, 85.8083394294, 85.8083394294);
+  border-color: #5cb85c;
+}
+
+jmnodes.theme-danger-bordered jmnode.level-1,
+jmnodes.theme-danger-bordered jmnode.level-1:hover,
+jmnodes.theme-danger-bordered jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-danger-bordered jmnode.level-2,
+jmnodes.theme-danger-bordered jmnode.level-2:hover,
+jmnodes.theme-danger-bordered jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-danger-bordered jmnode.level-3,
+jmnodes.theme-danger-bordered jmnode.level-3:hover,
+jmnodes.theme-danger-bordered jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-danger-bordered jmnode.level-4,
+jmnodes.theme-danger-bordered jmnode.level-4:hover,
+jmnodes.theme-danger-bordered jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-danger-bordered jmnode.level-5,
+jmnodes.theme-danger-bordered jmnode.level-5:hover,
+jmnodes.theme-danger-bordered jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-danger-bordered jmnode.level-6,
+jmnodes.theme-danger-bordered jmnode.level-6:hover,
+jmnodes.theme-danger-bordered jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-danger-bordered jmnode.level-7,
+jmnodes.theme-danger-bordered jmnode.level-7:hover,
+jmnodes.theme-danger-bordered jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-danger-bordered jmnode.level-8,
+jmnodes.theme-danger-bordered jmnode.level-8:hover,
+jmnodes.theme-danger-bordered jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-danger-bordered jmnode.level-9,
+jmnodes.theme-danger-bordered jmnode.level-9:hover,
+jmnodes.theme-danger-bordered jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-danger-bordered jmnode.level-10,
+jmnodes.theme-danger-bordered jmnode.level-10:hover,
+jmnodes.theme-danger-bordered jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-success-bordered jmnode {
+  background-color: rgb(217.51, 238.67, 217.51);
+  color: rgb(85.8083394294, 85.8083394294, 85.8083394294);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #5cb85c;
+}
+
+jmnodes.theme-success-bordered jmnode:hover {
+  background-color: #5cb85c;
+  color: #fff;
+  border-width: 3px;
+  border-color: #5cb85c;
+}
+
+jmnodes.theme-success-bordered jmnode.selected {
+  background-color: rgb(246.26, 215.44, 214.52);
+  color: rgb(86.8, 79.2260869565, 79);
+  border-color: #d9534f;
+}
+
+jmnodes.theme-success-bordered jmnode.level-1,
+jmnodes.theme-success-bordered jmnode.level-1:hover,
+jmnodes.theme-success-bordered jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-success-bordered jmnode.level-2,
+jmnodes.theme-success-bordered jmnode.level-2:hover,
+jmnodes.theme-success-bordered jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-success-bordered jmnode.level-3,
+jmnodes.theme-success-bordered jmnode.level-3:hover,
+jmnodes.theme-success-bordered jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-success-bordered jmnode.level-4,
+jmnodes.theme-success-bordered jmnode.level-4:hover,
+jmnodes.theme-success-bordered jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-success-bordered jmnode.level-5,
+jmnodes.theme-success-bordered jmnode.level-5:hover,
+jmnodes.theme-success-bordered jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-success-bordered jmnode.level-6,
+jmnodes.theme-success-bordered jmnode.level-6:hover,
+jmnodes.theme-success-bordered jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-success-bordered jmnode.level-7,
+jmnodes.theme-success-bordered jmnode.level-7:hover,
+jmnodes.theme-success-bordered jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-success-bordered jmnode.level-8,
+jmnodes.theme-success-bordered jmnode.level-8:hover,
+jmnodes.theme-success-bordered jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-success-bordered jmnode.level-9,
+jmnodes.theme-success-bordered jmnode.level-9:hover,
+jmnodes.theme-success-bordered jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-success-bordered jmnode.level-10,
+jmnodes.theme-success-bordered jmnode.level-10:hover,
+jmnodes.theme-success-bordered jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-info-bordered jmnode {
+  background-color: rgb(217.74, 240.51, 247.41);
+  color: rgb(91.4930555556, 91.4930555556, 91.4930555556);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #5dc0de;
+}
+
+jmnodes.theme-info-bordered jmnode:hover {
+  background-color: #5dc0de;
+  color: #fff;
+  border-width: 3px;
+  border-color: #5dc0de;
+}
+
+jmnodes.theme-info-bordered jmnode.selected {
+  background-color: rgb(251.78, 241.43, 199.8);
+  color: rgb(96.4, 80.1920353982, 15);
+  border-color: #f1c40f;
+}
+
+jmnodes.theme-info-bordered jmnode.level-1,
+jmnodes.theme-info-bordered jmnode.level-1:hover,
+jmnodes.theme-info-bordered jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-info-bordered jmnode.level-2,
+jmnodes.theme-info-bordered jmnode.level-2:hover,
+jmnodes.theme-info-bordered jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-info-bordered jmnode.level-3,
+jmnodes.theme-info-bordered jmnode.level-3:hover,
+jmnodes.theme-info-bordered jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-info-bordered jmnode.level-4,
+jmnodes.theme-info-bordered jmnode.level-4:hover,
+jmnodes.theme-info-bordered jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-info-bordered jmnode.level-5,
+jmnodes.theme-info-bordered jmnode.level-5:hover,
+jmnodes.theme-info-bordered jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-info-bordered jmnode.level-6,
+jmnodes.theme-info-bordered jmnode.level-6:hover,
+jmnodes.theme-info-bordered jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-info-bordered jmnode.level-7,
+jmnodes.theme-info-bordered jmnode.level-7:hover,
+jmnodes.theme-info-bordered jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-info-bordered jmnode.level-8,
+jmnodes.theme-info-bordered jmnode.level-8:hover,
+jmnodes.theme-info-bordered jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-info-bordered jmnode.level-9,
+jmnodes.theme-info-bordered jmnode.level-9:hover,
+jmnodes.theme-info-bordered jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-info-bordered jmnode.level-10,
+jmnodes.theme-info-bordered jmnode.level-10:hover,
+jmnodes.theme-info-bordered jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-greensea-bordered jmnode {
+  background-color: rgb(195.1914018692, 246.7285981308, 236.548411215);
+  color: rgb(26, 75.2, 65.4814814815);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #1abc9c;
+}
+
+jmnodes.theme-greensea-bordered jmnode:hover {
+  background-color: #1abc9c;
+  color: #fff;
+  border-width: 3px;
+  border-color: #1abc9c;
+}
+
+jmnodes.theme-greensea-bordered jmnode.selected {
+  background-color: rgb(246.7285981308, 195.1914018692, 195.1914018692);
+  color: rgb(75.2, 26, 26);
+  border-color: #bc1a1a;
+}
+
+jmnodes.theme-greensea-bordered jmnode.level-1,
+jmnodes.theme-greensea-bordered jmnode.level-1:hover,
+jmnodes.theme-greensea-bordered jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-greensea-bordered jmnode.level-2,
+jmnodes.theme-greensea-bordered jmnode.level-2:hover,
+jmnodes.theme-greensea-bordered jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-greensea-bordered jmnode.level-3,
+jmnodes.theme-greensea-bordered jmnode.level-3:hover,
+jmnodes.theme-greensea-bordered jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-greensea-bordered jmnode.level-4,
+jmnodes.theme-greensea-bordered jmnode.level-4:hover,
+jmnodes.theme-greensea-bordered jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-greensea-bordered jmnode.level-5,
+jmnodes.theme-greensea-bordered jmnode.level-5:hover,
+jmnodes.theme-greensea-bordered jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-greensea-bordered jmnode.level-6,
+jmnodes.theme-greensea-bordered jmnode.level-6:hover,
+jmnodes.theme-greensea-bordered jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-greensea-bordered jmnode.level-7,
+jmnodes.theme-greensea-bordered jmnode.level-7:hover,
+jmnodes.theme-greensea-bordered jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-greensea-bordered jmnode.level-8,
+jmnodes.theme-greensea-bordered jmnode.level-8:hover,
+jmnodes.theme-greensea-bordered jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-greensea-bordered jmnode.level-9,
+jmnodes.theme-greensea-bordered jmnode.level-9:hover,
+jmnodes.theme-greensea-bordered jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-greensea-bordered jmnode.level-10,
+jmnodes.theme-greensea-bordered jmnode.level-10:hover,
+jmnodes.theme-greensea-bordered jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-nephrite-bordered jmnode {
+  background-color: rgb(206.2032, 243.9968, 222.2296);
+  color: rgb(46, 81.6, 61.0962025316);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #2ecc71;
+}
+
+jmnodes.theme-nephrite-bordered jmnode:hover {
+  background-color: #2ecc71;
+  color: #fff;
+  border-width: 3px;
+  border-color: #2ecc71;
+}
+
+jmnodes.theme-nephrite-bordered jmnode.selected {
+  background-color: rgb(243.9968, 206.2032, 221.9904);
+  color: rgb(81.6, 46, 60.8708860759);
+  border-color: #cc2e70;
+}
+
+jmnodes.theme-nephrite-bordered jmnode.level-1,
+jmnodes.theme-nephrite-bordered jmnode.level-1:hover,
+jmnodes.theme-nephrite-bordered jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-nephrite-bordered jmnode.level-2,
+jmnodes.theme-nephrite-bordered jmnode.level-2:hover,
+jmnodes.theme-nephrite-bordered jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-nephrite-bordered jmnode.level-3,
+jmnodes.theme-nephrite-bordered jmnode.level-3:hover,
+jmnodes.theme-nephrite-bordered jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-nephrite-bordered jmnode.level-4,
+jmnodes.theme-nephrite-bordered jmnode.level-4:hover,
+jmnodes.theme-nephrite-bordered jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-nephrite-bordered jmnode.level-5,
+jmnodes.theme-nephrite-bordered jmnode.level-5:hover,
+jmnodes.theme-nephrite-bordered jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-nephrite-bordered jmnode.level-6,
+jmnodes.theme-nephrite-bordered jmnode.level-6:hover,
+jmnodes.theme-nephrite-bordered jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-nephrite-bordered jmnode.level-7,
+jmnodes.theme-nephrite-bordered jmnode.level-7:hover,
+jmnodes.theme-nephrite-bordered jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-nephrite-bordered jmnode.level-8,
+jmnodes.theme-nephrite-bordered jmnode.level-8:hover,
+jmnodes.theme-nephrite-bordered jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-nephrite-bordered jmnode.level-9,
+jmnodes.theme-nephrite-bordered jmnode.level-9:hover,
+jmnodes.theme-nephrite-bordered jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-nephrite-bordered jmnode.level-10,
+jmnodes.theme-nephrite-bordered jmnode.level-10:hover,
+jmnodes.theme-nephrite-bordered jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-belizehole-bordered jmnode {
+  background-color: rgb(208.31, 231.31, 246.72);
+  color: rgb(52, 73.3173652695, 87.6);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #3498db;
+}
+
+jmnodes.theme-belizehole-bordered jmnode:hover {
+  background-color: #3498db;
+  color: #fff;
+  border-width: 3px;
+  border-color: #3498db;
+}
+
+jmnodes.theme-belizehole-bordered jmnode.selected {
+  background-color: rgb(246.72, 231.31, 208.31);
+  color: rgb(87.6, 73.3173652695, 52);
+  border-color: #db9834;
+}
+
+jmnodes.theme-belizehole-bordered jmnode.level-1,
+jmnodes.theme-belizehole-bordered jmnode.level-1:hover,
+jmnodes.theme-belizehole-bordered jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-belizehole-bordered jmnode.level-2,
+jmnodes.theme-belizehole-bordered jmnode.level-2:hover,
+jmnodes.theme-belizehole-bordered jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-belizehole-bordered jmnode.level-3,
+jmnodes.theme-belizehole-bordered jmnode.level-3:hover,
+jmnodes.theme-belizehole-bordered jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-belizehole-bordered jmnode.level-4,
+jmnodes.theme-belizehole-bordered jmnode.level-4:hover,
+jmnodes.theme-belizehole-bordered jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-belizehole-bordered jmnode.level-5,
+jmnodes.theme-belizehole-bordered jmnode.level-5:hover,
+jmnodes.theme-belizehole-bordered jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-belizehole-bordered jmnode.level-6,
+jmnodes.theme-belizehole-bordered jmnode.level-6:hover,
+jmnodes.theme-belizehole-bordered jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-belizehole-bordered jmnode.level-7,
+jmnodes.theme-belizehole-bordered jmnode.level-7:hover,
+jmnodes.theme-belizehole-bordered jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-belizehole-bordered jmnode.level-8,
+jmnodes.theme-belizehole-bordered jmnode.level-8:hover,
+jmnodes.theme-belizehole-bordered jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-belizehole-bordered jmnode.level-9,
+jmnodes.theme-belizehole-bordered jmnode.level-9:hover,
+jmnodes.theme-belizehole-bordered jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-belizehole-bordered jmnode.level-10,
+jmnodes.theme-belizehole-bordered jmnode.level-10:hover,
+jmnodes.theme-belizehole-bordered jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-wisteria-bordered jmnode {
+  background-color: rgb(232, 216.82, 238.21);
+  color: rgb(83.6836283186, 83.6836283186, 83.6836283186);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #9b59b6;
+}
+
+jmnodes.theme-wisteria-bordered jmnode:hover {
+  background-color: #9b59b6;
+  color: #fff;
+  border-width: 3px;
+  border-color: #9b59b6;
+}
+
+jmnodes.theme-wisteria-bordered jmnode.selected {
+  background-color: rgb(220.73, 238.21, 216.82);
+  color: rgb(83.6836283186, 83.6836283186, 83.6836283186);
+  border-color: #6ab659;
+}
+
+jmnodes.theme-wisteria-bordered jmnode.level-1,
+jmnodes.theme-wisteria-bordered jmnode.level-1:hover,
+jmnodes.theme-wisteria-bordered jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-wisteria-bordered jmnode.level-2,
+jmnodes.theme-wisteria-bordered jmnode.level-2:hover,
+jmnodes.theme-wisteria-bordered jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-wisteria-bordered jmnode.level-3,
+jmnodes.theme-wisteria-bordered jmnode.level-3:hover,
+jmnodes.theme-wisteria-bordered jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-wisteria-bordered jmnode.level-4,
+jmnodes.theme-wisteria-bordered jmnode.level-4:hover,
+jmnodes.theme-wisteria-bordered jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-wisteria-bordered jmnode.level-5,
+jmnodes.theme-wisteria-bordered jmnode.level-5:hover,
+jmnodes.theme-wisteria-bordered jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-wisteria-bordered jmnode.level-6,
+jmnodes.theme-wisteria-bordered jmnode.level-6:hover,
+jmnodes.theme-wisteria-bordered jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-wisteria-bordered jmnode.level-7,
+jmnodes.theme-wisteria-bordered jmnode.level-7:hover,
+jmnodes.theme-wisteria-bordered jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-wisteria-bordered jmnode.level-8,
+jmnodes.theme-wisteria-bordered jmnode.level-8:hover,
+jmnodes.theme-wisteria-bordered jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-wisteria-bordered jmnode.level-9,
+jmnodes.theme-wisteria-bordered jmnode.level-9:hover,
+jmnodes.theme-wisteria-bordered jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-wisteria-bordered jmnode.level-10,
+jmnodes.theme-wisteria-bordered jmnode.level-10:hover,
+jmnodes.theme-wisteria-bordered jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asphalt-bordered jmnode {
+  background-color: rgb(201.0980821918, 213.14, 225.1819178082);
+  color: rgb(49.2204899777, 49.2204899777, 49.2204899777);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #34495e;
+}
+
+jmnodes.theme-asphalt-bordered jmnode:hover {
+  background-color: #34495e;
+  color: #fff;
+  border-width: 3px;
+  border-color: #34495e;
+}
+
+jmnodes.theme-asphalt-bordered jmnode.selected {
+  background-color: rgb(225.1819178082, 217.7273972603, 201.0980821918);
+  color: rgb(49.2204899777, 49.2204899777, 49.2204899777);
+  border-color: #5e5134;
+}
+
+jmnodes.theme-asphalt-bordered jmnode.level-1,
+jmnodes.theme-asphalt-bordered jmnode.level-1:hover,
+jmnodes.theme-asphalt-bordered jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-asphalt-bordered jmnode.level-2,
+jmnodes.theme-asphalt-bordered jmnode.level-2:hover,
+jmnodes.theme-asphalt-bordered jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-asphalt-bordered jmnode.level-3,
+jmnodes.theme-asphalt-bordered jmnode.level-3:hover,
+jmnodes.theme-asphalt-bordered jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-asphalt-bordered jmnode.level-4,
+jmnodes.theme-asphalt-bordered jmnode.level-4:hover,
+jmnodes.theme-asphalt-bordered jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-asphalt-bordered jmnode.level-5,
+jmnodes.theme-asphalt-bordered jmnode.level-5:hover,
+jmnodes.theme-asphalt-bordered jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-asphalt-bordered jmnode.level-6,
+jmnodes.theme-asphalt-bordered jmnode.level-6:hover,
+jmnodes.theme-asphalt-bordered jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asphalt-bordered jmnode.level-7,
+jmnodes.theme-asphalt-bordered jmnode.level-7:hover,
+jmnodes.theme-asphalt-bordered jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asphalt-bordered jmnode.level-8,
+jmnodes.theme-asphalt-bordered jmnode.level-8:hover,
+jmnodes.theme-asphalt-bordered jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asphalt-bordered jmnode.level-9,
+jmnodes.theme-asphalt-bordered jmnode.level-9:hover,
+jmnodes.theme-asphalt-bordered jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asphalt-bordered jmnode.level-10,
+jmnodes.theme-asphalt-bordered jmnode.level-10:hover,
+jmnodes.theme-asphalt-bordered jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-orange-bordered jmnode {
+  background-color: rgb(251.78, 241.43, 199.8);
+  color: rgb(96.4, 80.1920353982, 15);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #f1c40f;
+}
+
+jmnodes.theme-orange-bordered jmnode:hover {
+  background-color: #f1c40f;
+  color: #fff;
+  border-width: 3px;
+  border-color: #f1c40f;
+}
+
+jmnodes.theme-orange-bordered jmnode.selected {
+  background-color: rgb(199.8, 236.14, 251.78);
+  color: rgb(15, 71.9079646018, 96.4);
+  border-color: #0fadf1;
+}
+
+jmnodes.theme-orange-bordered jmnode.level-1,
+jmnodes.theme-orange-bordered jmnode.level-1:hover,
+jmnodes.theme-orange-bordered jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-orange-bordered jmnode.level-2,
+jmnodes.theme-orange-bordered jmnode.level-2:hover,
+jmnodes.theme-orange-bordered jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-orange-bordered jmnode.level-3,
+jmnodes.theme-orange-bordered jmnode.level-3:hover,
+jmnodes.theme-orange-bordered jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-orange-bordered jmnode.level-4,
+jmnodes.theme-orange-bordered jmnode.level-4:hover,
+jmnodes.theme-orange-bordered jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-orange-bordered jmnode.level-5,
+jmnodes.theme-orange-bordered jmnode.level-5:hover,
+jmnodes.theme-orange-bordered jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-orange-bordered jmnode.level-6,
+jmnodes.theme-orange-bordered jmnode.level-6:hover,
+jmnodes.theme-orange-bordered jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-orange-bordered jmnode.level-7,
+jmnodes.theme-orange-bordered jmnode.level-7:hover,
+jmnodes.theme-orange-bordered jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-orange-bordered jmnode.level-8,
+jmnodes.theme-orange-bordered jmnode.level-8:hover,
+jmnodes.theme-orange-bordered jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-orange-bordered jmnode.level-9,
+jmnodes.theme-orange-bordered jmnode.level-9:hover,
+jmnodes.theme-orange-bordered jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-orange-bordered jmnode.level-10,
+jmnodes.theme-orange-bordered jmnode.level-10:hover,
+jmnodes.theme-orange-bordered jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pumpkin-bordered jmnode {
+  background-color: rgb(249.25, 225.33, 204.17);
+  color: rgb(92, 61.2244897959, 34);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #e67e22;
+}
+
+jmnodes.theme-pumpkin-bordered jmnode:hover {
+  background-color: #e67e22;
+  color: #fff;
+  border-width: 3px;
+  border-color: #e67e22;
+}
+
+jmnodes.theme-pumpkin-bordered jmnode.selected {
+  background-color: rgb(204.17, 240.97, 249.25);
+  color: rgb(34, 81.3469387755, 92);
+  border-color: #22c2e6;
+}
+
+jmnodes.theme-pumpkin-bordered jmnode.level-1,
+jmnodes.theme-pumpkin-bordered jmnode.level-1:hover,
+jmnodes.theme-pumpkin-bordered jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-pumpkin-bordered jmnode.level-2,
+jmnodes.theme-pumpkin-bordered jmnode.level-2:hover,
+jmnodes.theme-pumpkin-bordered jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-pumpkin-bordered jmnode.level-3,
+jmnodes.theme-pumpkin-bordered jmnode.level-3:hover,
+jmnodes.theme-pumpkin-bordered jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-pumpkin-bordered jmnode.level-4,
+jmnodes.theme-pumpkin-bordered jmnode.level-4:hover,
+jmnodes.theme-pumpkin-bordered jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-pumpkin-bordered jmnode.level-5,
+jmnodes.theme-pumpkin-bordered jmnode.level-5:hover,
+jmnodes.theme-pumpkin-bordered jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-pumpkin-bordered jmnode.level-6,
+jmnodes.theme-pumpkin-bordered jmnode.level-6:hover,
+jmnodes.theme-pumpkin-bordered jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pumpkin-bordered jmnode.level-7,
+jmnodes.theme-pumpkin-bordered jmnode.level-7:hover,
+jmnodes.theme-pumpkin-bordered jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pumpkin-bordered jmnode.level-8,
+jmnodes.theme-pumpkin-bordered jmnode.level-8:hover,
+jmnodes.theme-pumpkin-bordered jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pumpkin-bordered jmnode.level-9,
+jmnodes.theme-pumpkin-bordered jmnode.level-9:hover,
+jmnodes.theme-pumpkin-bordered jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pumpkin-bordered jmnode.level-10,
+jmnodes.theme-pumpkin-bordered jmnode.level-10:hover,
+jmnodes.theme-pumpkin-bordered jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pomegranate-bordered jmnode {
+  background-color: rgb(249.48, 213.83, 210.15);
+  color: rgb(92.4, 63.0315789474, 60);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #e74c3c;
+}
+
+jmnodes.theme-pomegranate-bordered jmnode:hover {
+  background-color: #e74c3c;
+  color: #fff;
+  border-width: 3px;
+  border-color: #e74c3c;
+}
+
+jmnodes.theme-pomegranate-bordered jmnode.selected {
+  background-color: rgb(210.15, 249.48, 228.55);
+  color: rgb(60, 92.4, 75.1578947368);
+  border-color: #3ce78c;
+}
+
+jmnodes.theme-pomegranate-bordered jmnode.level-1,
+jmnodes.theme-pomegranate-bordered jmnode.level-1:hover,
+jmnodes.theme-pomegranate-bordered jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-pomegranate-bordered jmnode.level-2,
+jmnodes.theme-pomegranate-bordered jmnode.level-2:hover,
+jmnodes.theme-pomegranate-bordered jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-pomegranate-bordered jmnode.level-3,
+jmnodes.theme-pomegranate-bordered jmnode.level-3:hover,
+jmnodes.theme-pomegranate-bordered jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-pomegranate-bordered jmnode.level-4,
+jmnodes.theme-pomegranate-bordered jmnode.level-4:hover,
+jmnodes.theme-pomegranate-bordered jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-pomegranate-bordered jmnode.level-5,
+jmnodes.theme-pomegranate-bordered jmnode.level-5:hover,
+jmnodes.theme-pomegranate-bordered jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-pomegranate-bordered jmnode.level-6,
+jmnodes.theme-pomegranate-bordered jmnode.level-6:hover,
+jmnodes.theme-pomegranate-bordered jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pomegranate-bordered jmnode.level-7,
+jmnodes.theme-pomegranate-bordered jmnode.level-7:hover,
+jmnodes.theme-pomegranate-bordered jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pomegranate-bordered jmnode.level-8,
+jmnodes.theme-pomegranate-bordered jmnode.level-8:hover,
+jmnodes.theme-pomegranate-bordered jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pomegranate-bordered jmnode.level-9,
+jmnodes.theme-pomegranate-bordered jmnode.level-9:hover,
+jmnodes.theme-pomegranate-bordered jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-pomegranate-bordered jmnode.level-10,
+jmnodes.theme-pomegranate-bordered jmnode.level-10:hover,
+jmnodes.theme-pomegranate-bordered jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-clouds-bordered jmnode {
+  background-color: rgb(239.82, 241.2, 242.12);
+  color: rgb(108.5472972973, 108.5472972973, 108.5472972973);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #bdc3c7;
+}
+
+jmnodes.theme-clouds-bordered jmnode:hover {
+  background-color: #bdc3c7;
+  color: #fff;
+  border-width: 3px;
+  border-color: #bdc3c7;
+}
+
+jmnodes.theme-clouds-bordered jmnode.selected {
+  background-color: rgb(214.7335714286, 215.67, 216.6064285714);
+  color: rgb(69.1011235955, 69.1011235955, 69.1011235955);
+  border-color: #525456;
+}
+
+jmnodes.theme-clouds-bordered jmnode.level-1,
+jmnodes.theme-clouds-bordered jmnode.level-1:hover,
+jmnodes.theme-clouds-bordered jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-clouds-bordered jmnode.level-2,
+jmnodes.theme-clouds-bordered jmnode.level-2:hover,
+jmnodes.theme-clouds-bordered jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-clouds-bordered jmnode.level-3,
+jmnodes.theme-clouds-bordered jmnode.level-3:hover,
+jmnodes.theme-clouds-bordered jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-clouds-bordered jmnode.level-4,
+jmnodes.theme-clouds-bordered jmnode.level-4:hover,
+jmnodes.theme-clouds-bordered jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-clouds-bordered jmnode.level-5,
+jmnodes.theme-clouds-bordered jmnode.level-5:hover,
+jmnodes.theme-clouds-bordered jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-clouds-bordered jmnode.level-6,
+jmnodes.theme-clouds-bordered jmnode.level-6:hover,
+jmnodes.theme-clouds-bordered jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-clouds-bordered jmnode.level-7,
+jmnodes.theme-clouds-bordered jmnode.level-7:hover,
+jmnodes.theme-clouds-bordered jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-clouds-bordered jmnode.level-8,
+jmnodes.theme-clouds-bordered jmnode.level-8:hover,
+jmnodes.theme-clouds-bordered jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-clouds-bordered jmnode.level-9,
+jmnodes.theme-clouds-bordered jmnode.level-9:hover,
+jmnodes.theme-clouds-bordered jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-clouds-bordered jmnode.level-10,
+jmnodes.theme-clouds-bordered jmnode.level-10:hover,
+jmnodes.theme-clouds-bordered jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asbestos-bordered jmnode {
+  background-color: rgb(225.56, 228.55, 228.78);
+  color: rgb(99.4625307125, 99.4625307125, 99.4625307125);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #7f8c8d;
+}
+
+jmnodes.theme-asbestos-bordered jmnode:hover {
+  background-color: #7f8c8d;
+  color: #fff;
+  border-width: 3px;
+  border-color: #7f8c8d;
+}
+
+jmnodes.theme-asbestos-bordered jmnode.selected {
+  background-color: rgb(228.78, 227.86, 225.56);
+  color: rgb(99.4625307125, 99.4625307125, 99.4625307125);
+  border-color: #8d897f;
+}
+
+jmnodes.theme-asbestos-bordered jmnode.level-1,
+jmnodes.theme-asbestos-bordered jmnode.level-1:hover,
+jmnodes.theme-asbestos-bordered jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-asbestos-bordered jmnode.level-2,
+jmnodes.theme-asbestos-bordered jmnode.level-2:hover,
+jmnodes.theme-asbestos-bordered jmnode.level-2.selected {
+  font-size: 22px;
+  border-width: 4px;
+}
+
+jmnodes.theme-asbestos-bordered jmnode.level-3,
+jmnodes.theme-asbestos-bordered jmnode.level-3:hover,
+jmnodes.theme-asbestos-bordered jmnode.level-3.selected {
+  font-size: 20px;
+  border-width: 3px;
+}
+
+jmnodes.theme-asbestos-bordered jmnode.level-4,
+jmnodes.theme-asbestos-bordered jmnode.level-4:hover,
+jmnodes.theme-asbestos-bordered jmnode.level-4.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-asbestos-bordered jmnode.level-5,
+jmnodes.theme-asbestos-bordered jmnode.level-5:hover,
+jmnodes.theme-asbestos-bordered jmnode.level-5.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-asbestos-bordered jmnode.level-6,
+jmnodes.theme-asbestos-bordered jmnode.level-6:hover,
+jmnodes.theme-asbestos-bordered jmnode.level-6.selected {
+  font-size: 14px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asbestos-bordered jmnode.level-7,
+jmnodes.theme-asbestos-bordered jmnode.level-7:hover,
+jmnodes.theme-asbestos-bordered jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asbestos-bordered jmnode.level-8,
+jmnodes.theme-asbestos-bordered jmnode.level-8:hover,
+jmnodes.theme-asbestos-bordered jmnode.level-8.selected {
+  font-size: 10px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asbestos-bordered jmnode.level-9,
+jmnodes.theme-asbestos-bordered jmnode.level-9:hover,
+jmnodes.theme-asbestos-bordered jmnode.level-9.selected {
+  font-size: 8px;
+  border-width: 2px;
+}
+
+jmnodes.theme-asbestos-bordered jmnode.level-10,
+jmnodes.theme-asbestos-bordered jmnode.level-10:hover,
+jmnodes.theme-asbestos-bordered jmnode.level-10.selected {
+  font-size: 6px;
+  border-width: 2px;
+}
+
+jmnodes.theme-leveled-bordered jmnode {
+  background-color: rgb(195.1914018692, 246.7285981308, 236.548411215);
+  color: rgb(26, 75.2, 65.4814814815);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #1abc9c;
+}
+
+jmnodes.theme-leveled-bordered jmnode:hover {
+  background-color: #1abc9c;
+  color: #fff;
+  border-width: 3px;
+  border-color: #1abc9c;
+}
+
+jmnodes.theme-leveled-bordered jmnode.selected {
+  background-color: rgb(246.7285981308, 195.1914018692, 195.1914018692);
+  color: rgb(75.2, 26, 26);
+  border-color: #bc1a1a;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-1,
+jmnodes.theme-leveled-bordered jmnode.level-1:hover,
+jmnodes.theme-leveled-bordered jmnode.level-1.selected {
+  font-size: 24px;
+  border-width: 5px;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-1 {
+  background-color: rgb(246.26, 215.44, 214.52);
+  color: rgb(86.8, 79.2260869565, 79);
+  border-style: solid;
+  border-color: #d9534f;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-1:hover {
+  background-color: #d9534f;
+  color: #fff;
+  border-color: #d9534f;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-1.selected {
+  background-color: rgb(217.51, 238.67, 217.51);
+  color: rgb(85.8083394294, 85.8083394294, 85.8083394294);
+  border-color: #5cb85c;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-2,
+jmnodes.theme-leveled-bordered jmnode.level-2:hover,
+jmnodes.theme-leveled-bordered jmnode.level-2.selected {
+  font-size: 20px;
+  border-width: 4px;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-2 {
+  background-color: rgb(217.51, 238.67, 217.51);
+  color: rgb(85.8083394294, 85.8083394294, 85.8083394294);
+  border-style: solid;
+  border-color: #5cb85c;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-2:hover {
+  background-color: #5cb85c;
+  color: #fff;
+  border-color: #5cb85c;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-2.selected {
+  background-color: rgb(246.26, 215.44, 214.52);
+  color: rgb(86.8, 79.2260869565, 79);
+  border-color: #d9534f;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-3,
+jmnodes.theme-leveled-bordered jmnode.level-3:hover,
+jmnodes.theme-leveled-bordered jmnode.level-3.selected {
+  font-size: 18px;
+  border-width: 3px;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-3 {
+  background-color: rgb(217.74, 240.51, 247.41);
+  color: rgb(91.4930555556, 91.4930555556, 91.4930555556);
+  border-style: solid;
+  border-color: #5dc0de;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-3:hover {
+  background-color: #5dc0de;
+  color: #fff;
+  border-color: #5dc0de;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-3.selected {
+  background-color: rgb(251.78, 241.43, 199.8);
+  color: rgb(96.4, 80.1920353982, 15);
+  border-color: #f1c40f;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-4,
+jmnodes.theme-leveled-bordered jmnode.level-4:hover,
+jmnodes.theme-leveled-bordered jmnode.level-4.selected {
+  font-size: 16px;
+  border-width: 3px;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-4 {
+  background-color: rgb(232, 216.82, 238.21);
+  color: rgb(83.6836283186, 83.6836283186, 83.6836283186);
+  border-style: solid;
+  border-color: #9b59b6;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-4:hover {
+  background-color: #9b59b6;
+  color: #fff;
+  border-color: #9b59b6;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-4.selected {
+  background-color: rgb(220.73, 238.21, 216.82);
+  color: rgb(83.6836283186, 83.6836283186, 83.6836283186);
+  border-color: #6ab659;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-5,
+jmnodes.theme-leveled-bordered jmnode.level-5:hover,
+jmnodes.theme-leveled-bordered jmnode.level-5.selected {
+  font-size: 14px;
+  border-width: 3px;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-5 {
+  background-color: rgb(249.25, 225.33, 204.17);
+  color: rgb(92, 61.2244897959, 34);
+  border-style: solid;
+  border-color: #e67e22;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-5:hover {
+  background-color: #e67e22;
+  color: #fff;
+  border-color: #e67e22;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-5.selected {
+  background-color: rgb(204.17, 240.97, 249.25);
+  color: rgb(34, 81.3469387755, 92);
+  border-color: #22c2e6;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-6,
+jmnodes.theme-leveled-bordered jmnode.level-6:hover,
+jmnodes.theme-leveled-bordered jmnode.level-6.selected {
+  font-size: 13px;
+  border-width: 2px;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-6 {
+  background-color: rgb(206.2032, 243.9968, 222.2296);
+  color: rgb(46, 81.6, 61.0962025316);
+  border-style: solid;
+  border-color: #2ecc71;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-6:hover {
+  background-color: #2ecc71;
+  color: #fff;
+  border-color: #2ecc71;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-6.selected {
+  background-color: rgb(243.9968, 206.2032, 221.9904);
+  color: rgb(81.6, 46, 60.8708860759);
+  border-color: #cc2e70;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-7,
+jmnodes.theme-leveled-bordered jmnode.level-7:hover,
+jmnodes.theme-leveled-bordered jmnode.level-7.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-7 {
+  background-color: rgb(251.55, 236.14, 214.29);
+  color: rgb(96, 88.5555555556, 78);
+  border-style: solid;
+  border-color: #f0ad4e;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-7:hover {
+  background-color: #f0ad4e;
+  color: #fff;
+  border-color: #f0ad4e;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-7.selected {
+  background-color: rgb(211.53, 228.32, 242.81);
+  color: rgb(66, 73.9441176471, 80.8);
+  border-color: #428bca;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-8,
+jmnodes.theme-leveled-bordered jmnode.level-8:hover,
+jmnodes.theme-leveled-bordered jmnode.level-8.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-8 {
+  background-color: rgb(208.31, 231.31, 246.72);
+  color: rgb(52, 73.3173652695, 87.6);
+  border-style: solid;
+  border-color: #3498db;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-8:hover {
+  background-color: #3498db;
+  color: #fff;
+  border-color: #3498db;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-8.selected {
+  background-color: rgb(246.72, 231.31, 208.31);
+  color: rgb(87.6, 73.3173652695, 52);
+  border-color: #db9834;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-9,
+jmnodes.theme-leveled-bordered jmnode.level-9:hover,
+jmnodes.theme-leveled-bordered jmnode.level-9.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-9 {
+  background-color: rgb(251.78, 241.43, 199.8);
+  color: rgb(96.4, 80.1920353982, 15);
+  border-style: solid;
+  border-color: #f1c40f;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-9:hover {
+  background-color: #f1c40f;
+  color: #fff;
+  border-color: #f1c40f;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-9.selected {
+  background-color: rgb(199.8, 236.14, 251.78);
+  color: rgb(15, 71.9079646018, 96.4);
+  border-color: #0fadf1;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-10,
+jmnodes.theme-leveled-bordered jmnode.level-10:hover,
+jmnodes.theme-leveled-bordered jmnode.level-10.selected {
+  font-size: 12px;
+  border-width: 2px;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-10 {
+  background-color: rgb(201.0980821918, 213.14, 225.1819178082);
+  color: rgb(49.2204899777, 49.2204899777, 49.2204899777);
+  border-style: solid;
+  border-color: #34495e;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-10:hover {
+  background-color: #34495e;
+  color: #fff;
+  border-color: #34495e;
+}
+
+jmnodes.theme-leveled-bordered jmnode.level-10.selected {
+  background-color: rgb(225.1819178082, 217.7273972603, 201.0980821918);
+  color: rgb(49.2204899777, 49.2204899777, 49.2204899777);
+  border-color: #5e5134;
+}

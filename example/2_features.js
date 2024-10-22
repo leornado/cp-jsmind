@@ -2,7 +2,7 @@ var _jm = null;
 function open_empty() {
     var options = {
         container: 'jsmind_container',
-        theme: 'greensea',
+        theme: 'leveled',
         editable: true,
         log_level: 'debug',
         view: {
@@ -32,6 +32,49 @@ function open_json() {
             id: 'root',
             topic: 'jsMind',
             children: [
+                {
+                    id      : 'level2', topic: 'Level 2',
+                    children: [
+                        {
+                            id      : 'level3', topic: 'Level 3',
+                            children: [
+                                {
+                                    id      : 'level4', topic: 'Level 4',
+                                    children: [
+                                        {
+                                            id      : 'level5', topic: 'Level 5',
+                                            children: [
+                                                {
+                                                    id: 'level6', topic: 'Level 6',
+                                                    children: [
+                                                        {
+                                                            id: 'level7', topic: 'Level 7',
+                                                            children: [
+                                                                {
+                                                                    id: 'level8', topic: 'Level 8',
+                                                                    children: [
+                                                                        {
+                                                                            id: 'level9', topic: 'Level 9',
+                                                                            children: [
+                                                                                {
+                                                                                    id: 'level10', topic: 'Level 10'
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
                 {
                     id: 'easy',
                     topic: 'Easy',
@@ -460,3 +503,4 @@ function prompt_info(msg) {
 }
 
 open_empty();
+open_json();
