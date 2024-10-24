@@ -96,6 +96,7 @@ function open_json() {
                     id: 'open',
                     topic: 'Open Source',
                     direction: 'right',
+                    'node-class': ['theme-warning'],
                     children: [
                         {
                             'id': 'open1',

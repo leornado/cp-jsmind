@@ -1,27 +1,27 @@
 @use 'sass:color';
 @use "sass:map";
 
-@mixin themeBgc($prop, $map, $colorKey, $baseColorKey) {
+@mixin themeBgc($prop, $map, $colorKey, $baseColorKey, $important) {
   @if (map.has-key($map, $colorKey)) {
-    #{$prop}: map.get($map, $colorKey);
+    #{$prop}: map.get($map, $colorKey)#{$important};
   } @else {
-    #{$prop}: color.scale(map.get($map, $baseColorKey), $lightness: 77%);
+    #{$prop}: color.scale(map.get($map, $baseColorKey), $lightness: 77%)#{$important};
   }
 }
 
-@mixin themeC($prop, $map, $colorKey, $baseColorKey) {
+@mixin themeC($prop, $map, $colorKey, $baseColorKey, $important) {
   @if (map.has-key($map, $colorKey)) {
-    #{$prop}: map.get($map, $colorKey);
+    #{$prop}: map.get($map, $colorKey)#{$important};
   } @else {
-    #{$prop}: color.scale(map.get($map, $baseColorKey), $blackness: 60%);
+    #{$prop}: color.scale(map.get($map, $baseColorKey), $blackness: 60%)#{$important};
   }
 }
 
-@mixin defIfBlank($prop, $map, $key1, $key2) {
+@mixin defIfBlank($prop, $map, $key1, $key2, $important) {
   @if (map.has-key($map, $key1)) {
-    #{$prop}: map.get($map, $key1);
+    #{$prop}: map.get($map, $key1)#{$important};
   } @else {
-    #{$prop}: map.get($map, $key2);
+    #{$prop}: map.get($map, $key2)#{$important};
   }
 }
 
@@ -245,21 +245,21 @@ $node-level-fs: (
 
 @each $theme, $themeCfg in $themes {
   jmnodes.theme-#{$theme} jmnode {
-    @include themeBgc('background-color', $themeCfg, 'bgc', 'bc');
-    @include themeC('color', $themeCfg, 'c', 'bc');
+    @include themeBgc('background-color', $themeCfg, 'bgc', 'bc', '');
+    @include themeC('color', $themeCfg, 'c', 'bc', '');
     border-style: solid;
     border-width: map.get($themeCfg, 'bw');
     border-color: map.get($themeCfg, 'bc');
   }
   jmnodes.theme-#{$theme} jmnode:hover {
-    @include defIfBlank('background-color', $themeCfg, 'hbgc', 'bc');
-    @include defIfBlank('color', $themeCfg, 'hc', 'c');
-    @include defIfBlank('border-width', $themeCfg, 'hbw', 'bw');
-    @include defIfBlank('border-color', $themeCfg, 'hbc', 'bc');
+    @include defIfBlank('background-color', $themeCfg, 'hbgc', 'bc', '');
+    @include defIfBlank('color', $themeCfg, 'hc', 'c', '');
+    @include defIfBlank('border-width', $themeCfg, 'hbw', 'bw', '');
+    @include defIfBlank('border-color', $themeCfg, 'hbc', 'bc', '');
   }
   jmnodes.theme-#{$theme} jmnode.selected {
-    @include themeBgc('background-color', $themeCfg, 'sbgc', 'sbc');
-    @include themeC('color', $themeCfg, 'sc', 'sbc');
+    @include themeBgc('background-color', $themeCfg, 'sbgc', 'sbc', '');
+    @include themeC('color', $themeCfg, 'sc', 'sbc', '');
     border-color: map.get($themeCfg, 'sbc');
   }
 
@@ -289,23 +289,42 @@ $node-level-fs: (
         $levelThemeCfg: map.get($themes, $levelThemeName);
 
         jmnodes.theme-#{$theme} jmnode.level-#{$i} {
-          @include themeBgc('background-color', $levelThemeCfg, 'bgc', 'bc');
-          @include themeC('color', $levelThemeCfg, 'c', 'bc');
+          @include themeBgc('background-color', $levelThemeCfg, 'bgc', 'bc', '');
+          @include themeC('color', $levelThemeCfg, 'c', 'bc', '');
           border-style: solid;
           border-color: map.get($levelThemeCfg, 'bc');
         }
         jmnodes.theme-#{$theme} jmnode.level-#{$i}:hover {
-          @include defIfBlank('background-color', $levelThemeCfg, 'hbgc', 'bc');
-          @include defIfBlank('color', $levelThemeCfg, 'hc', 'c');
-          @include defIfBlank('border-color', $levelThemeCfg, 'hbc', 'bc');
+          @include defIfBlank('background-color', $levelThemeCfg, 'hbgc', 'bc', '');
+          @include defIfBlank('color', $levelThemeCfg, 'hc', 'c', '');
+          @include defIfBlank('border-color', $levelThemeCfg, 'hbc', 'bc', '');
         }
         jmnodes.theme-#{$theme} jmnode.level-#{$i}.selected {
-          @include themeBgc('background-color', $levelThemeCfg, 'sbgc', 'sbc');
-          @include themeC('color', $levelThemeCfg, 'sc', 'sbc');
+          @include themeBgc('background-color', $levelThemeCfg, 'sbgc', 'sbc', '');
+          @include themeC('color', $levelThemeCfg, 'sc', 'sbc', '');
           border-color: map.get($levelThemeCfg, 'sbc');
         }
       }
     }
+  }
+
+  jmnodes jmnode.theme-#{$theme} {
+    @include themeBgc('background-color', $themeCfg, 'bgc', 'bc', '!important');
+    @include themeC('color', $themeCfg, 'c', 'bc', '!important');
+    border-style: solid !important;
+    border-width: map.get($themeCfg, 'bw') !important;
+    border-color: map.get($themeCfg, 'bc') !important;
+  }
+  jmnodes jmnode.theme-#{$theme}:hover {
+    @include defIfBlank('background-color', $themeCfg, 'hbgc', 'bc', '!important');
+    @include defIfBlank('color', $themeCfg, 'hc', 'c', '!important');
+    @include defIfBlank('border-width', $themeCfg, 'hbw', 'bw', '!important');
+    @include defIfBlank('border-color', $themeCfg, 'hbc', 'bc', '!important');
+  }
+  jmnodes jmnode.theme-#{$theme}.selected {
+    @include themeBgc('background-color', $themeCfg, 'sbgc', 'sbc', '!important');
+    @include themeC('color', $themeCfg, 'sc', 'sbc', '!important');
+    border-color: map.get($themeCfg, 'sbc') !important;
   }
 }
 

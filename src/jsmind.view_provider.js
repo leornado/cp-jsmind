@@ -512,12 +512,17 @@ export class ViewProvider {
     reset_node_custom_style(node) {
         this._reset_node_custom_style(node._data.view.element, node.data);
     }
-    _reset_node_custom_style(node_element, node_data) {
-        if ('nodeStyle' in node_data) {
-            for (let k in node_data.style) {
+    _reset_node_extra_style(node_element, node_data){
+        if ('node-style' in node_data) {
+            for (let k in node_data['node-style']) {
                 if (node_element.style.hasOwnProperty(k)) {
-                    node_element.style[k] = node_data.style[k];
+                    node_element.style[k] = node_data['node-style'][k];
                 }
+            }
+        }
+        if ('node-class' in node_data) {
+            for (let k of node_data['node-class']) {
+                node_element.classList.add(k)
             }
         }
         if ('border-color' in node_data) {
@@ -539,6 +544,10 @@ export class ViewProvider {
         if ('foreground-color' in node_data) {
             node_element.style.color = node_data['foreground-color'];
         }
+    }
+    _reset_node_custom_style(node_element, node_data) {
+        this._reset_node_extra_style(node_element, node_data);
+
         if ('width' in node_data) {
             node_element.style.width = node_data['width'] + 'px';
         }
@@ -592,33 +601,7 @@ export class ViewProvider {
     restore_selected_node_custom_style(node) {
         var node_element = node._data.view.element;
         var node_data = node.data;
-
-        if ('nodeStyle' in node_data) {
-            for (let k in node_data.style) {
-                if (node_element.style.hasOwnProperty(k)) {
-                    node_element.style[k] = node_data.style[k];
-                }
-            }
-        }
-        if ('border-color' in node_data) {
-            node_element.style.borderColor = node_data['border-color'];
-            if (!node_data['border-style']) node_element.style.borderStyle = 'solid';
-            if (!node_data['border-width']) node_element.style.borderWidth = '3px';
-        }
-        if ('border-width' in node_data) {
-            node_element.style.borderWidth = node_data['border-width'];
-            if (!node_data['border-style']) node_element.style.borderStyle = 'solid';
-        }
-        if ('border-style' in node_data) {
-            node_element.style.borderStyle = node_data['border-style'];
-        }
-
-        if ('background-color' in node_data) {
-            node_element.style.backgroundColor = node_data['background-color'];
-        }
-        if ('foreground-color' in node_data) {
-            node_element.style.color = node_data['foreground-color'];
-        }
+        this._reset_node_extra_style(node_element, node_data);
     }
     clear_selected_node_custom_style(node) {
         var node_element = node._data.view.element;
