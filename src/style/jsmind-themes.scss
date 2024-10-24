@@ -27,67 +27,67 @@
 
 $themes: (
         'primary':(
-                'bw': 0,
-                'bgc':#428bca, 'bc':#357ebd, 'c':#fff,
+                'bw': 3px,
+                'bgc':#428bca, 'bc':#428bca, 'c':#fff,
                 'hbgc':#3276b1, 'sbc':#f1c40f, 'sc':#fff),
         'warning':(
-                'bw': 0,
-                'bgc':#f0ad4e, 'bc':#eea236, 'c':#fff,
+                'bw': 3px,
+                'bgc':#f0ad4e, 'bc':#f0ad4e, 'c':#fff,
                 'hbgc':#ed9c28, 'sbc':#11f, 'sc':#fff),
         'danger':(
-                'bw': 0,
-                'bgc':#d9534f, 'bc':#d43f3a, 'c':#fff,
+                'bw': 3px,
+                'bgc':#d9534f, 'bc':#d9534f, 'c':#fff,
                 'hbgc':#d2322d, 'sbc':#11f, 'sc':#fff),
         'success':(
-                'bw': 0,
-                'bgc':#5cb85c, 'bc':#4cae4c, 'c':#fff,
+                'bw': 3px,
+                'bgc':#5cb85c, 'bc':#5cb85c, 'c':#fff,
                 'hbgc':#47a447, 'sbc':#11f, 'sc':#fff),
         'info':(
-                'bw': 0,
-                'bgc':#5dc0de, 'bc':#46b8da, 'c':#fff,
+                'bw': 3px,
+                'bgc':#5dc0de, 'bc':#5dc0de, 'c':#fff,
                 'hbgc':#39b3d7, 'sbc':#11f, 'sc':#fff),
         'greensea':(
-                'bw': 0,
+                'bw': 3px,
                 'bgc':#1abc9c, 'bc':#1abc9c, 'c':#fff,
                 'hbgc':#16a085, 'sbc':#11f, 'sc':#fff),
         'nephrite':(
-                'bw': 0,
+                'bw': 3px,
                 'bgc':#2ecc71, 'bc':#2ecc71, 'c':#fff,
                 'hbgc':#27ae60, 'sbc':#11f, 'sc':#fff),
         'belizehole':(
-                'bw': 0,
+                'bw': 3px,
                 'bgc':#3498db, 'bc':#3498db, 'c':#fff,
                 'hbgc':#2980b9, 'sbc':#11f, 'sc':#fff),
         'wisteria':(
-                'bw': 0,
+                'bw': 3px,
                 'bgc':#9b59b6, 'bc':#9b59b6, 'c':#fff,
                 'hbgc':#8e44ad, 'sbc':#11f, 'sc':#fff),
         'asphalt':(
-                'bw': 0,
+                'bw': 3px,
                 'bgc':#34495e, 'bc':#34495e, 'c':#fff,
                 'hbgc':#2c3e50, 'sbc':#11f, 'sc':#fff),
         'orange':(
-                'bw': 0,
+                'bw': 3px,
                 'bgc':#f1c40f, 'bc':#f1c40f, 'c':#fff,
                 'hbgc':#f39c12, 'sbc':#11f, 'sc':#fff),
         'pumpkin':(
-                'bw': 0,
+                'bw': 3px,
                 'bgc':#e67e22, 'bc':#e67e22, 'c':#fff,
                 'hbgc':#d35400, 'sbc':#11f, 'sc':#fff),
         'pomegranate':(
-                'bw': 0,
+                'bw': 3px,
                 'bgc':#e74c3c, 'bc':#e74c3c, 'c':#fff,
                 'hbgc':#c0392b, 'sbc':#11f, 'sc':#fff),
         'clouds':(
-                'bw': 0,
+                'bw': 3px,
                 'bgc':#ecf0f1, 'bc':#ecf0f1, 'c':#000,
                 'hbgc':#bdc3c7, 'sbc':#11f, 'sc':#000),
         'asbestos':(
-                'bw': 0,
+                'bw': 3px,
                 'bgc':#95a5a6, 'bc':#95a5a6, 'c':#fff,
                 'hbgc':#7f8c8d, 'sbc':#11f, 'sc':#fff),
         'leveled':(
-                'bw': 0,
+                'bw': 3px,
                 'bgc':#1abc9c, 'bc':#1abc9c, 'c':#fff,
                 'hbgc':#16a085, 'sbc':#11f, 'sc':#fff,
                 'color-themes': (
@@ -115,16 +115,16 @@ $themes: (
                         'fs-10': 12px,
                 ),
                 'level-bw': (
-                        'bw-1': 0px,
-                        'bw-2': 0px,
-                        'bw-3': 0px,
-                        'bw-4': 0px,
-                        'bw-5': 0px,
-                        'bw-6': 0px,
-                        'bw-7': 0px,
-                        'bw-8': 0px,
-                        'bw-9': 0px,
-                        'bw-10': 0px,
+                        'bw-1': 3px,
+                        'bw-2': 3px,
+                        'bw-3': 3px,
+                        'bw-4': 3px,
+                        'bw-5': 3px,
+                        'bw-6': 3px,
+                        'bw-7': 3px,
+                        'bw-8': 3px,
+                        'bw-9': 3px,
+                        'bw-10': 3px,
                 )),
 // plain-themes
         'primary-bordered':(
@@ -335,13 +335,5 @@ $node-level-fs: (
     @return false;
   }
 }
-
-
-
-
-
-
-
-
 
 

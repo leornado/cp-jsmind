@@ -2,7 +2,7 @@ var _jm = null;
 function open_empty() {
     var options = {
         container: 'jsmind_container',
-        theme: 'leveled',
+        theme: 'leveled-bordered',
         editable: true,
         log_level: 'debug',
         view: {
@@ -28,106 +28,7 @@ function open_json() {
             version: '0.2',
         },
         format: 'node_tree',
-        data: {
-            id: 'root',
-            topic: 'jsMind',
-            children: [
-                {
-                    id      : 'level2', topic: 'Level 2',
-                    children: [
-                        {
-                            id      : 'level3', topic: 'Level 3',
-                            children: [
-                                {
-                                    id      : 'level4', topic: 'Level 4',
-                                    children: [
-                                        {
-                                            id      : 'level5', topic: 'Level 5',
-                                            children: [
-                                                {
-                                                    id: 'level6', topic: 'Level 6',
-                                                    children: [
-                                                        {
-                                                            id: 'level7', topic: 'Level 7',
-                                                            children: [
-                                                                {
-                                                                    id: 'level8', topic: 'Level 8',
-                                                                    children: [
-                                                                        {
-                                                                            id: 'level9', topic: 'Level 9',
-                                                                            children: [
-                                                                                {
-                                                                                    id: 'level10', topic: 'Level 10'
-                                                                                }
-                                                                            ]
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'easy',
-                    topic: 'Easy',
-                    direction: 'left',
-                    children: [
-                        { id: 'easy1', topic: 'Easy to show' },
-                        { id: 'easy2', topic: 'Easy to edit' },
-                        { id: 'easy3', topic: 'Easy to store' },
-                        { id: 'easy4', topic: 'Easy to embed' },
-                        {
-                            'id': 'other3',
-                            'background-image': 'ant.png',
-                            'width': '100',
-                            'height': '100',
-                        },
-                    ],
-                },
-                {
-                    id: 'open',
-                    topic: 'Open Source',
-                    direction: 'right',
-                    'node-class': ['theme-warning'],
-                    children: [
-                        {
-                            'id': 'open1',
-                            'topic': 'on GitHub',
-                            'background-color': '#eee',
-                            'foreground-color': 'blue',
-                        },
-                        { id: 'open2', topic: 'BSD License' },
-                    ],
-                },
-                {
-                    id: 'powerful',
-                    topic: 'Powerful',
-                    direction: 'right',
-                    children: [
-                        { id: 'powerful1', topic: 'Base on Javascript' },
-                        { id: 'powerful2', topic: 'Base on HTML5' },
-                        { id: 'powerful3', topic: 'Depends on you' },
-                    ],
-                },
-                {
-                    id: 'other',
-                    topic: 'test node',
-                    direction: 'left',
-                    children: [
-                        { id: 'other1', topic: "I'm from local variable" },
-                        { id: 'other2', topic: 'I can do everything' },
-                    ],
-                },
-            ],
-        },
+        "data":{"id":"root","topic":"jsMind 介绍","children":[{"direction":"left","expanded":true,"topic":"动手试一试吧!","background-color":"#f39c12","leading-line-color":"#e67e22","foreground-color":"#000000","border-width":0,"id":"lv2-1","children":[{"children":[{"id":"lv4-3","children":[{"child-3-1":[{"topic":"child-4-1","id":"lv6-5"},{"topic":"child-4-2","node-class":["theme-success"],"id":"lv6-6"}],"id":"lv5-4","children":[{"topic":"child-4-1","id":"lv6-5"},{"topic":"child-4-2","node-class":["theme-success"],"id":"lv6-6"}],"topic":"child-3-1"}],"topic":"child-2-1"}],"topic":"child-1-1","id":"lv3-2"},{"children":[{"id":"lv4-8","children":[{"child-3-2":[{"topic":"child-4-3","id":"lv6-10"},{"topic":"child-4-4","id":"lv6-11"}],"id":"lv5-9","children":[{"topic":"child-4-3","id":"lv6-10"},{"topic":"child-4-4","id":"lv6-11"}],"topic":"child-3-2"},{"children":[{"child-3-3":[{"topic":"child-4-5","id":"lv7-14"},{"topic":"child-4-6","id":"lv7-15"}],"child-3-4":["child-4-7","child-4-8"],"id":"lv6-13","children":[{"topic":"child-4-5","id":"lv7-14"},{"topic":"child-4-6","id":"lv7-15"}],"topic":"child-3-3"}],"topic":"child-2-3","id":"lv5-12"}],"topic":"child-2-2"}],"topic":"child-1-2","id":"lv3-7"},{"children":[{"topic":"child-2-4","node-class":["theme-danger"],"id":"lv4-17","children":[{"children":[{"child-4-1":[{"topic":"child-4-9","id":"lv7-20"}],"id":"lv6-19","children":[{"topic":"child-4-9","id":"lv7-20"}],"topic":"child-4-1"}],"topic":"child-3-5","id":"lv5-18"}]}],"topic":"child-1-3","id":"lv3-16"}]},{"children":[{"topic":"单击: 选择节点","id":"lv3-22"},{"topic":"双击: 进入编辑模式，回车保存","id":"lv3-23"},{"topic":"拖动: 摆放节点","id":"lv3-24"},{"topic":"点小圆圈: 展开/收缩子节点","id":"lv3-25"}],"direction":"right","expanded":false,"topic":"鼠标操作","id":"lv2-21"},{"topic":"键盘操作","direction":"right","children":[{"id":"1007","topic":"Enter: 添加同级节点"},{"id":"f389","topic":"Ctrl+Enter: 添加下级节点"},{"id":"9b69","topic":"F2: 进入编辑模式，回车保存"},{"id":"15e3","topic":"Delete: 删除节点"},{"id":"1565","topic":"Space: 展开/收缩子节点"},{"id":"27ca","topic":"快捷键能改也能加"}],"id":"lv2-26"},{"topic":"用 jsMind 的理由?","direction":"left","children":[{"id":"471a","topic":"开源"},{"id":"693b","topic":"快, 很快"},{"id":"1405","topic":"简洁"},{"id":"394a","topic":"支持主题也能自定义样式"},{"id":"2a63","topic":"免费无广告"},{"id":"5e48","topic":"一个浏览器足够"}],"id":"lv2-27"}]},"format":"node_tree","meta":{"version":"0.2"},
     };
     _jm.show(mind);
 }
