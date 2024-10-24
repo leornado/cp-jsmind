@@ -29,67 +29,67 @@ $themes: (
         'primary':(
                 'bw': 3px,
                 'bgc':#428bca, 'bc':#428bca, 'c':#fff,
-                'hbgc':#3276b1, 'sbc':#f1c40f, 'sc':#fff),
+                'hbgc':#428bca, 'sbgc':#f0ad4e, 'sbc':#f0ad4e, 'sc':#fff),
         'warning':(
                 'bw': 3px,
                 'bgc':#f0ad4e, 'bc':#f0ad4e, 'c':#fff,
-                'hbgc':#ed9c28, 'sbc':#11f, 'sc':#fff),
+                'hbgc':#f0ad4e, 'sbgc':#428bca, 'sbc':#428bca, 'sc':#fff),
         'danger':(
                 'bw': 3px,
                 'bgc':#d9534f, 'bc':#d9534f, 'c':#fff,
-                'hbgc':#d2322d, 'sbc':#11f, 'sc':#fff),
+                'hbgc':#d9534f, 'sbgc':#5cb85c, 'sbc':#5cb85c, 'sc':#fff),
         'success':(
                 'bw': 3px,
                 'bgc':#5cb85c, 'bc':#5cb85c, 'c':#fff,
-                'hbgc':#47a447, 'sbc':#11f, 'sc':#fff),
+                'hbgc':#5cb85c, 'sbgc':#d9534f, 'sbc':#d9534f, 'sc':#fff),
         'info':(
                 'bw': 3px,
                 'bgc':#5dc0de, 'bc':#5dc0de, 'c':#fff,
-                'hbgc':#39b3d7, 'sbc':#11f, 'sc':#fff),
+                'hbgc':#5dc0de, 'sbgc':#f1c40f, 'sbc':#f1c40f, 'sc':#fff),
         'greensea':(
                 'bw': 3px,
                 'bgc':#1abc9c, 'bc':#1abc9c, 'c':#fff,
-                'hbgc':#16a085, 'sbc':#11f, 'sc':#fff),
+                'hbgc':#1abc9c, 'sbgc':#bc1a1a, 'sbc':#bc1a1a, 'sc':#fff),
         'nephrite':(
                 'bw': 3px,
                 'bgc':#2ecc71, 'bc':#2ecc71, 'c':#fff,
-                'hbgc':#27ae60, 'sbc':#11f, 'sc':#fff),
+                'hbgc':#2ecc71, 'sbgc':#cc2e70, 'sbc':#cc2e70, 'sc':#fff),
         'belizehole':(
                 'bw': 3px,
                 'bgc':#3498db, 'bc':#3498db, 'c':#fff,
-                'hbgc':#2980b9, 'sbc':#11f, 'sc':#fff),
+                'hbgc':#3498db, 'sbgc':#db9834, 'sbc':#db9834, 'sc':#fff),
         'wisteria':(
                 'bw': 3px,
                 'bgc':#9b59b6, 'bc':#9b59b6, 'c':#fff,
-                'hbgc':#8e44ad, 'sbc':#11f, 'sc':#fff),
+                'hbgc':#9b59b6, 'sbgc':#6ab659, 'sbc':#6ab659, 'sc':#fff),
         'asphalt':(
                 'bw': 3px,
                 'bgc':#34495e, 'bc':#34495e, 'c':#fff,
-                'hbgc':#2c3e50, 'sbc':#11f, 'sc':#fff),
+                'hbgc':#34495e, 'sbgc':#5e5134, 'sbc':#5e5134, 'sc':#fff),
         'orange':(
                 'bw': 3px,
                 'bgc':#f1c40f, 'bc':#f1c40f, 'c':#fff,
-                'hbgc':#f39c12, 'sbc':#11f, 'sc':#fff),
+                'hbgc':#f1c40f, 'sbgc':#0fadf1, 'sbc':#0fadf1, 'sc':#fff),
         'pumpkin':(
                 'bw': 3px,
                 'bgc':#e67e22, 'bc':#e67e22, 'c':#fff,
-                'hbgc':#d35400, 'sbc':#11f, 'sc':#fff),
+                'hbgc':#e67e22, 'sbgc':#22c2e6, 'sbc':#22c2e6, 'sc':#fff),
         'pomegranate':(
                 'bw': 3px,
                 'bgc':#e74c3c, 'bc':#e74c3c, 'c':#fff,
-                'hbgc':#c0392b, 'sbc':#11f, 'sc':#fff),
+                'hbgc':#e74c3c, 'sbgc':#3ce78c, 'sbc':#3ce78c, 'sc':#fff),
         'clouds':(
                 'bw': 3px,
                 'bgc':#ecf0f1, 'bc':#ecf0f1, 'c':#000,
-                'hbgc':#bdc3c7, 'sbc':#11f, 'sc':#000),
+                'hbgc':#ecf0f1, 'sbgc':#525456, 'sbc':#525456, 'sc':#fff),
         'asbestos':(
                 'bw': 3px,
                 'bgc':#95a5a6, 'bc':#95a5a6, 'c':#fff,
-                'hbgc':#7f8c8d, 'sbc':#11f, 'sc':#fff),
+                'hbgc':#95a5a6, 'sbgc':#8d897f, 'sbc':#8d897f, 'sc':#fff),
         'leveled':(
                 'bw': 3px,
                 'bgc':#1abc9c, 'bc':#1abc9c, 'c':#fff,
-                'hbgc':#16a085, 'sbc':#11f, 'sc':#fff,
+                'hbgc':#1abc9c, 'sbgc':#bc1a1a, 'sbc':#bc1a1a, 'sc':#fff,
                 'color-themes': (
                         'color-1':'danger',
                         'color-2':'success',

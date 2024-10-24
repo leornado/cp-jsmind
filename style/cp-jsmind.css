@@ -131,16 +131,16 @@ jmnodes.theme-primary jmnode {
 }
 
 jmnodes.theme-primary jmnode:hover {
-  background-color: #3276b1;
+  background-color: #428bca;
   color: #fff;
   border-width: 3px;
   border-color: #428bca;
 }
 
 jmnodes.theme-primary jmnode.selected {
-  background-color: rgb(251.78, 241.43, 199.8);
+  background-color: #f0ad4e;
   color: #fff;
-  border-color: #f1c40f;
+  border-color: #f0ad4e;
 }
 
 jmnodes.theme-primary jmnode.level-1,
@@ -222,16 +222,16 @@ jmnodes jmnode.theme-primary {
 }
 
 jmnodes jmnode.theme-primary:hover {
-  background-color: #3276b1 !important;
+  background-color: #428bca !important;
   color: #fff !important;
   border-width: 3px !important;
   border-color: #428bca !important;
 }
 
 jmnodes jmnode.theme-primary.selected {
-  background-color: rgb(251.78, 241.43, 199.8) !important;
+  background-color: #f0ad4e !important;
   color: #fff !important;
-  border-color: #f1c40f !important;
+  border-color: #f0ad4e !important;
 }
 
 jmnodes.theme-warning jmnode {
@@ -243,16 +243,16 @@ jmnodes.theme-warning jmnode {
 }
 
 jmnodes.theme-warning jmnode:hover {
-  background-color: #ed9c28;
+  background-color: #f0ad4e;
   color: #fff;
   border-width: 3px;
   border-color: #f0ad4e;
 }
 
 jmnodes.theme-warning jmnode.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #428bca;
   color: #fff;
-  border-color: #11f;
+  border-color: #428bca;
 }
 
 jmnodes.theme-warning jmnode.level-1,
@@ -334,16 +334,16 @@ jmnodes jmnode.theme-warning {
 }
 
 jmnodes jmnode.theme-warning:hover {
-  background-color: #ed9c28 !important;
+  background-color: #f0ad4e !important;
   color: #fff !important;
   border-width: 3px !important;
   border-color: #f0ad4e !important;
 }
 
 jmnodes jmnode.theme-warning.selected {
-  background-color: rgb(200.26, 200.26, 255) !important;
+  background-color: #428bca !important;
   color: #fff !important;
-  border-color: #11f !important;
+  border-color: #428bca !important;
 }
 
 jmnodes.theme-danger jmnode {
@@ -355,16 +355,16 @@ jmnodes.theme-danger jmnode {
 }
 
 jmnodes.theme-danger jmnode:hover {
-  background-color: #d2322d;
+  background-color: #d9534f;
   color: #fff;
   border-width: 3px;
   border-color: #d9534f;
 }
 
 jmnodes.theme-danger jmnode.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #5cb85c;
   color: #fff;
-  border-color: #11f;
+  border-color: #5cb85c;
 }
 
 jmnodes.theme-danger jmnode.level-1,
@@ -446,16 +446,16 @@ jmnodes jmnode.theme-danger {
 }
 
 jmnodes jmnode.theme-danger:hover {
-  background-color: #d2322d !important;
+  background-color: #d9534f !important;
   color: #fff !important;
   border-width: 3px !important;
   border-color: #d9534f !important;
 }
 
 jmnodes jmnode.theme-danger.selected {
-  background-color: rgb(200.26, 200.26, 255) !important;
+  background-color: #5cb85c !important;
   color: #fff !important;
-  border-color: #11f !important;
+  border-color: #5cb85c !important;
 }
 
 jmnodes.theme-success jmnode {
@@ -467,16 +467,16 @@ jmnodes.theme-success jmnode {
 }
 
 jmnodes.theme-success jmnode:hover {
-  background-color: #47a447;
+  background-color: #5cb85c;
   color: #fff;
   border-width: 3px;
   border-color: #5cb85c;
 }
 
 jmnodes.theme-success jmnode.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #d9534f;
   color: #fff;
-  border-color: #11f;
+  border-color: #d9534f;
 }
 
 jmnodes.theme-success jmnode.level-1,
@@ -558,16 +558,16 @@ jmnodes jmnode.theme-success {
 }
 
 jmnodes jmnode.theme-success:hover {
-  background-color: #47a447 !important;
+  background-color: #5cb85c !important;
   color: #fff !important;
   border-width: 3px !important;
   border-color: #5cb85c !important;
 }
 
 jmnodes jmnode.theme-success.selected {
-  background-color: rgb(200.26, 200.26, 255) !important;
+  background-color: #d9534f !important;
   color: #fff !important;
-  border-color: #11f !important;
+  border-color: #d9534f !important;
 }
 
 jmnodes.theme-info jmnode {
@@ -579,16 +579,16 @@ jmnodes.theme-info jmnode {
 }
 
 jmnodes.theme-info jmnode:hover {
-  background-color: #39b3d7;
+  background-color: #5dc0de;
   color: #fff;
   border-width: 3px;
   border-color: #5dc0de;
 }
 
 jmnodes.theme-info jmnode.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #f1c40f;
   color: #fff;
-  border-color: #11f;
+  border-color: #f1c40f;
 }
 
 jmnodes.theme-info jmnode.level-1,
@@ -670,16 +670,16 @@ jmnodes jmnode.theme-info {
 }
 
 jmnodes jmnode.theme-info:hover {
-  background-color: #39b3d7 !important;
+  background-color: #5dc0de !important;
   color: #fff !important;
   border-width: 3px !important;
   border-color: #5dc0de !important;
 }
 
 jmnodes jmnode.theme-info.selected {
-  background-color: rgb(200.26, 200.26, 255) !important;
+  background-color: #f1c40f !important;
   color: #fff !important;
-  border-color: #11f !important;
+  border-color: #f1c40f !important;
 }
 
 jmnodes.theme-greensea jmnode {
@@ -691,16 +691,16 @@ jmnodes.theme-greensea jmnode {
 }
 
 jmnodes.theme-greensea jmnode:hover {
-  background-color: #16a085;
+  background-color: #1abc9c;
   color: #fff;
   border-width: 3px;
   border-color: #1abc9c;
 }
 
 jmnodes.theme-greensea jmnode.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #bc1a1a;
   color: #fff;
-  border-color: #11f;
+  border-color: #bc1a1a;
 }
 
 jmnodes.theme-greensea jmnode.level-1,
@@ -782,16 +782,16 @@ jmnodes jmnode.theme-greensea {
 }
 
 jmnodes jmnode.theme-greensea:hover {
-  background-color: #16a085 !important;
+  background-color: #1abc9c !important;
   color: #fff !important;
   border-width: 3px !important;
   border-color: #1abc9c !important;
 }
 
 jmnodes jmnode.theme-greensea.selected {
-  background-color: rgb(200.26, 200.26, 255) !important;
+  background-color: #bc1a1a !important;
   color: #fff !important;
-  border-color: #11f !important;
+  border-color: #bc1a1a !important;
 }
 
 jmnodes.theme-nephrite jmnode {
@@ -803,16 +803,16 @@ jmnodes.theme-nephrite jmnode {
 }
 
 jmnodes.theme-nephrite jmnode:hover {
-  background-color: #27ae60;
+  background-color: #2ecc71;
   color: #fff;
   border-width: 3px;
   border-color: #2ecc71;
 }
 
 jmnodes.theme-nephrite jmnode.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #cc2e70;
   color: #fff;
-  border-color: #11f;
+  border-color: #cc2e70;
 }
 
 jmnodes.theme-nephrite jmnode.level-1,
@@ -894,16 +894,16 @@ jmnodes jmnode.theme-nephrite {
 }
 
 jmnodes jmnode.theme-nephrite:hover {
-  background-color: #27ae60 !important;
+  background-color: #2ecc71 !important;
   color: #fff !important;
   border-width: 3px !important;
   border-color: #2ecc71 !important;
 }
 
 jmnodes jmnode.theme-nephrite.selected {
-  background-color: rgb(200.26, 200.26, 255) !important;
+  background-color: #cc2e70 !important;
   color: #fff !important;
-  border-color: #11f !important;
+  border-color: #cc2e70 !important;
 }
 
 jmnodes.theme-belizehole jmnode {
@@ -915,16 +915,16 @@ jmnodes.theme-belizehole jmnode {
 }
 
 jmnodes.theme-belizehole jmnode:hover {
-  background-color: #2980b9;
+  background-color: #3498db;
   color: #fff;
   border-width: 3px;
   border-color: #3498db;
 }
 
 jmnodes.theme-belizehole jmnode.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #db9834;
   color: #fff;
-  border-color: #11f;
+  border-color: #db9834;
 }
 
 jmnodes.theme-belizehole jmnode.level-1,
@@ -1006,16 +1006,16 @@ jmnodes jmnode.theme-belizehole {
 }
 
 jmnodes jmnode.theme-belizehole:hover {
-  background-color: #2980b9 !important;
+  background-color: #3498db !important;
   color: #fff !important;
   border-width: 3px !important;
   border-color: #3498db !important;
 }
 
 jmnodes jmnode.theme-belizehole.selected {
-  background-color: rgb(200.26, 200.26, 255) !important;
+  background-color: #db9834 !important;
   color: #fff !important;
-  border-color: #11f !important;
+  border-color: #db9834 !important;
 }
 
 jmnodes.theme-wisteria jmnode {
@@ -1027,16 +1027,16 @@ jmnodes.theme-wisteria jmnode {
 }
 
 jmnodes.theme-wisteria jmnode:hover {
-  background-color: #8e44ad;
+  background-color: #9b59b6;
   color: #fff;
   border-width: 3px;
   border-color: #9b59b6;
 }
 
 jmnodes.theme-wisteria jmnode.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #6ab659;
   color: #fff;
-  border-color: #11f;
+  border-color: #6ab659;
 }
 
 jmnodes.theme-wisteria jmnode.level-1,
@@ -1118,16 +1118,16 @@ jmnodes jmnode.theme-wisteria {
 }
 
 jmnodes jmnode.theme-wisteria:hover {
-  background-color: #8e44ad !important;
+  background-color: #9b59b6 !important;
   color: #fff !important;
   border-width: 3px !important;
   border-color: #9b59b6 !important;
 }
 
 jmnodes jmnode.theme-wisteria.selected {
-  background-color: rgb(200.26, 200.26, 255) !important;
+  background-color: #6ab659 !important;
   color: #fff !important;
-  border-color: #11f !important;
+  border-color: #6ab659 !important;
 }
 
 jmnodes.theme-asphalt jmnode {
@@ -1139,16 +1139,16 @@ jmnodes.theme-asphalt jmnode {
 }
 
 jmnodes.theme-asphalt jmnode:hover {
-  background-color: #2c3e50;
+  background-color: #34495e;
   color: #fff;
   border-width: 3px;
   border-color: #34495e;
 }
 
 jmnodes.theme-asphalt jmnode.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #5e5134;
   color: #fff;
-  border-color: #11f;
+  border-color: #5e5134;
 }
 
 jmnodes.theme-asphalt jmnode.level-1,
@@ -1230,16 +1230,16 @@ jmnodes jmnode.theme-asphalt {
 }
 
 jmnodes jmnode.theme-asphalt:hover {
-  background-color: #2c3e50 !important;
+  background-color: #34495e !important;
   color: #fff !important;
   border-width: 3px !important;
   border-color: #34495e !important;
 }
 
 jmnodes jmnode.theme-asphalt.selected {
-  background-color: rgb(200.26, 200.26, 255) !important;
+  background-color: #5e5134 !important;
   color: #fff !important;
-  border-color: #11f !important;
+  border-color: #5e5134 !important;
 }
 
 jmnodes.theme-orange jmnode {
@@ -1251,16 +1251,16 @@ jmnodes.theme-orange jmnode {
 }
 
 jmnodes.theme-orange jmnode:hover {
-  background-color: #f39c12;
+  background-color: #f1c40f;
   color: #fff;
   border-width: 3px;
   border-color: #f1c40f;
 }
 
 jmnodes.theme-orange jmnode.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #0fadf1;
   color: #fff;
-  border-color: #11f;
+  border-color: #0fadf1;
 }
 
 jmnodes.theme-orange jmnode.level-1,
@@ -1342,16 +1342,16 @@ jmnodes jmnode.theme-orange {
 }
 
 jmnodes jmnode.theme-orange:hover {
-  background-color: #f39c12 !important;
+  background-color: #f1c40f !important;
   color: #fff !important;
   border-width: 3px !important;
   border-color: #f1c40f !important;
 }
 
 jmnodes jmnode.theme-orange.selected {
-  background-color: rgb(200.26, 200.26, 255) !important;
+  background-color: #0fadf1 !important;
   color: #fff !important;
-  border-color: #11f !important;
+  border-color: #0fadf1 !important;
 }
 
 jmnodes.theme-pumpkin jmnode {
@@ -1363,16 +1363,16 @@ jmnodes.theme-pumpkin jmnode {
 }
 
 jmnodes.theme-pumpkin jmnode:hover {
-  background-color: #d35400;
+  background-color: #e67e22;
   color: #fff;
   border-width: 3px;
   border-color: #e67e22;
 }
 
 jmnodes.theme-pumpkin jmnode.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #22c2e6;
   color: #fff;
-  border-color: #11f;
+  border-color: #22c2e6;
 }
 
 jmnodes.theme-pumpkin jmnode.level-1,
@@ -1454,16 +1454,16 @@ jmnodes jmnode.theme-pumpkin {
 }
 
 jmnodes jmnode.theme-pumpkin:hover {
-  background-color: #d35400 !important;
+  background-color: #e67e22 !important;
   color: #fff !important;
   border-width: 3px !important;
   border-color: #e67e22 !important;
 }
 
 jmnodes jmnode.theme-pumpkin.selected {
-  background-color: rgb(200.26, 200.26, 255) !important;
+  background-color: #22c2e6 !important;
   color: #fff !important;
-  border-color: #11f !important;
+  border-color: #22c2e6 !important;
 }
 
 jmnodes.theme-pomegranate jmnode {
@@ -1475,16 +1475,16 @@ jmnodes.theme-pomegranate jmnode {
 }
 
 jmnodes.theme-pomegranate jmnode:hover {
-  background-color: #c0392b;
+  background-color: #e74c3c;
   color: #fff;
   border-width: 3px;
   border-color: #e74c3c;
 }
 
 jmnodes.theme-pomegranate jmnode.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #3ce78c;
   color: #fff;
-  border-color: #11f;
+  border-color: #3ce78c;
 }
 
 jmnodes.theme-pomegranate jmnode.level-1,
@@ -1566,16 +1566,16 @@ jmnodes jmnode.theme-pomegranate {
 }
 
 jmnodes jmnode.theme-pomegranate:hover {
-  background-color: #c0392b !important;
+  background-color: #e74c3c !important;
   color: #fff !important;
   border-width: 3px !important;
   border-color: #e74c3c !important;
 }
 
 jmnodes jmnode.theme-pomegranate.selected {
-  background-color: rgb(200.26, 200.26, 255) !important;
+  background-color: #3ce78c !important;
   color: #fff !important;
-  border-color: #11f !important;
+  border-color: #3ce78c !important;
 }
 
 jmnodes.theme-clouds jmnode {
@@ -1587,16 +1587,16 @@ jmnodes.theme-clouds jmnode {
 }
 
 jmnodes.theme-clouds jmnode:hover {
-  background-color: #bdc3c7;
+  background-color: #ecf0f1;
   color: #000;
   border-width: 3px;
   border-color: #ecf0f1;
 }
 
 jmnodes.theme-clouds jmnode.selected {
-  background-color: rgb(200.26, 200.26, 255);
-  color: #000;
-  border-color: #11f;
+  background-color: #525456;
+  color: #fff;
+  border-color: #525456;
 }
 
 jmnodes.theme-clouds jmnode.level-1,
@@ -1678,16 +1678,16 @@ jmnodes jmnode.theme-clouds {
 }
 
 jmnodes jmnode.theme-clouds:hover {
-  background-color: #bdc3c7 !important;
+  background-color: #ecf0f1 !important;
   color: #000 !important;
   border-width: 3px !important;
   border-color: #ecf0f1 !important;
 }
 
 jmnodes jmnode.theme-clouds.selected {
-  background-color: rgb(200.26, 200.26, 255) !important;
-  color: #000 !important;
-  border-color: #11f !important;
+  background-color: #525456 !important;
+  color: #fff !important;
+  border-color: #525456 !important;
 }
 
 jmnodes.theme-asbestos jmnode {
@@ -1699,16 +1699,16 @@ jmnodes.theme-asbestos jmnode {
 }
 
 jmnodes.theme-asbestos jmnode:hover {
-  background-color: #7f8c8d;
+  background-color: #95a5a6;
   color: #fff;
   border-width: 3px;
   border-color: #95a5a6;
 }
 
 jmnodes.theme-asbestos jmnode.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #8d897f;
   color: #fff;
-  border-color: #11f;
+  border-color: #8d897f;
 }
 
 jmnodes.theme-asbestos jmnode.level-1,
@@ -1790,16 +1790,16 @@ jmnodes jmnode.theme-asbestos {
 }
 
 jmnodes jmnode.theme-asbestos:hover {
-  background-color: #7f8c8d !important;
+  background-color: #95a5a6 !important;
   color: #fff !important;
   border-width: 3px !important;
   border-color: #95a5a6 !important;
 }
 
 jmnodes jmnode.theme-asbestos.selected {
-  background-color: rgb(200.26, 200.26, 255) !important;
+  background-color: #8d897f !important;
   color: #fff !important;
-  border-color: #11f !important;
+  border-color: #8d897f !important;
 }
 
 jmnodes.theme-leveled jmnode {
@@ -1811,16 +1811,16 @@ jmnodes.theme-leveled jmnode {
 }
 
 jmnodes.theme-leveled jmnode:hover {
-  background-color: #16a085;
+  background-color: #1abc9c;
   color: #fff;
   border-width: 3px;
   border-color: #1abc9c;
 }
 
 jmnodes.theme-leveled jmnode.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #bc1a1a;
   color: #fff;
-  border-color: #11f;
+  border-color: #bc1a1a;
 }
 
 jmnodes.theme-leveled jmnode.level-1,
@@ -1838,15 +1838,15 @@ jmnodes.theme-leveled jmnode.level-1 {
 }
 
 jmnodes.theme-leveled jmnode.level-1:hover {
-  background-color: #d2322d;
+  background-color: #d9534f;
   color: #fff;
   border-color: #d9534f;
 }
 
 jmnodes.theme-leveled jmnode.level-1.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #5cb85c;
   color: #fff;
-  border-color: #11f;
+  border-color: #5cb85c;
 }
 
 jmnodes.theme-leveled jmnode.level-2,
@@ -1864,15 +1864,15 @@ jmnodes.theme-leveled jmnode.level-2 {
 }
 
 jmnodes.theme-leveled jmnode.level-2:hover {
-  background-color: #47a447;
+  background-color: #5cb85c;
   color: #fff;
   border-color: #5cb85c;
 }
 
 jmnodes.theme-leveled jmnode.level-2.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #d9534f;
   color: #fff;
-  border-color: #11f;
+  border-color: #d9534f;
 }
 
 jmnodes.theme-leveled jmnode.level-3,
@@ -1890,15 +1890,15 @@ jmnodes.theme-leveled jmnode.level-3 {
 }
 
 jmnodes.theme-leveled jmnode.level-3:hover {
-  background-color: #39b3d7;
+  background-color: #5dc0de;
   color: #fff;
   border-color: #5dc0de;
 }
 
 jmnodes.theme-leveled jmnode.level-3.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #f1c40f;
   color: #fff;
-  border-color: #11f;
+  border-color: #f1c40f;
 }
 
 jmnodes.theme-leveled jmnode.level-4,
@@ -1916,15 +1916,15 @@ jmnodes.theme-leveled jmnode.level-4 {
 }
 
 jmnodes.theme-leveled jmnode.level-4:hover {
-  background-color: #8e44ad;
+  background-color: #9b59b6;
   color: #fff;
   border-color: #9b59b6;
 }
 
 jmnodes.theme-leveled jmnode.level-4.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #6ab659;
   color: #fff;
-  border-color: #11f;
+  border-color: #6ab659;
 }
 
 jmnodes.theme-leveled jmnode.level-5,
@@ -1942,15 +1942,15 @@ jmnodes.theme-leveled jmnode.level-5 {
 }
 
 jmnodes.theme-leveled jmnode.level-5:hover {
-  background-color: #d35400;
+  background-color: #e67e22;
   color: #fff;
   border-color: #e67e22;
 }
 
 jmnodes.theme-leveled jmnode.level-5.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #22c2e6;
   color: #fff;
-  border-color: #11f;
+  border-color: #22c2e6;
 }
 
 jmnodes.theme-leveled jmnode.level-6,
@@ -1968,15 +1968,15 @@ jmnodes.theme-leveled jmnode.level-6 {
 }
 
 jmnodes.theme-leveled jmnode.level-6:hover {
-  background-color: #27ae60;
+  background-color: #2ecc71;
   color: #fff;
   border-color: #2ecc71;
 }
 
 jmnodes.theme-leveled jmnode.level-6.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #cc2e70;
   color: #fff;
-  border-color: #11f;
+  border-color: #cc2e70;
 }
 
 jmnodes.theme-leveled jmnode.level-7,
@@ -1994,15 +1994,15 @@ jmnodes.theme-leveled jmnode.level-7 {
 }
 
 jmnodes.theme-leveled jmnode.level-7:hover {
-  background-color: #ed9c28;
+  background-color: #f0ad4e;
   color: #fff;
   border-color: #f0ad4e;
 }
 
 jmnodes.theme-leveled jmnode.level-7.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #428bca;
   color: #fff;
-  border-color: #11f;
+  border-color: #428bca;
 }
 
 jmnodes.theme-leveled jmnode.level-8,
@@ -2020,15 +2020,15 @@ jmnodes.theme-leveled jmnode.level-8 {
 }
 
 jmnodes.theme-leveled jmnode.level-8:hover {
-  background-color: #2980b9;
+  background-color: #3498db;
   color: #fff;
   border-color: #3498db;
 }
 
 jmnodes.theme-leveled jmnode.level-8.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #db9834;
   color: #fff;
-  border-color: #11f;
+  border-color: #db9834;
 }
 
 jmnodes.theme-leveled jmnode.level-9,
@@ -2046,15 +2046,15 @@ jmnodes.theme-leveled jmnode.level-9 {
 }
 
 jmnodes.theme-leveled jmnode.level-9:hover {
-  background-color: #f39c12;
+  background-color: #f1c40f;
   color: #fff;
   border-color: #f1c40f;
 }
 
 jmnodes.theme-leveled jmnode.level-9.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #0fadf1;
   color: #fff;
-  border-color: #11f;
+  border-color: #0fadf1;
 }
 
 jmnodes.theme-leveled jmnode.level-10,
@@ -2072,15 +2072,15 @@ jmnodes.theme-leveled jmnode.level-10 {
 }
 
 jmnodes.theme-leveled jmnode.level-10:hover {
-  background-color: #2c3e50;
+  background-color: #34495e;
   color: #fff;
   border-color: #34495e;
 }
 
 jmnodes.theme-leveled jmnode.level-10.selected {
-  background-color: rgb(200.26, 200.26, 255);
+  background-color: #5e5134;
   color: #fff;
-  border-color: #11f;
+  border-color: #5e5134;
 }
 
 jmnodes jmnode.theme-leveled {
@@ -2092,16 +2092,16 @@ jmnodes jmnode.theme-leveled {
 }
 
 jmnodes jmnode.theme-leveled:hover {
-  background-color: #16a085 !important;
+  background-color: #1abc9c !important;
   color: #fff !important;
   border-width: 3px !important;
   border-color: #1abc9c !important;
 }
 
 jmnodes jmnode.theme-leveled.selected {
-  background-color: rgb(200.26, 200.26, 255) !important;
+  background-color: #bc1a1a !important;
   color: #fff !important;
-  border-color: #11f !important;
+  border-color: #bc1a1a !important;
 }
 
 jmnodes.theme-primary-bordered jmnode {

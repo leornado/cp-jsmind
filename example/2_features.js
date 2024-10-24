@@ -2,7 +2,7 @@ var _jm = null;
 function open_empty() {
     var options = {
         container: 'jsmind_container',
-        theme: 'leveled-bordered',
+        theme: '',
         editable: true,
         log_level: 'debug',
         view: {

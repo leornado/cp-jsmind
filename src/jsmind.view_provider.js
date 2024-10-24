@@ -129,7 +129,7 @@ export class ViewProvider {
         if (!!theme_name) {
             this.e_nodes.className = 'theme-' + theme_name;
         } else {
-            this.e_nodes.className = '';
+            this.e_nodes.className = 'theme-leveled';
         }
     }
     reset_custom_style() {
